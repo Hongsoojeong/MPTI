@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "68855889265",
+    "project_id": "mpti-app",
+    "storage_bucket": "mpti-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68855889265:android:a3021934b5075b879c4ad0",
+        "android_client_info": {
+          "package_name": "com.example.mpti_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68855889265-d7e87cigma7udb1din7d14uv87tjs3b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzZOLcqJSeapNKAkTNicx9zV4zf8bVZgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68855889265-d7e87cigma7udb1din7d14uv87tjs3b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
