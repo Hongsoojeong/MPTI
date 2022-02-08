@@ -8,9 +8,15 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/sinupActivity_imageview_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="50dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
             android:hint="이메일"
             android:id="@+id/signupActivity_email"
@@ -34,6 +40,7 @@
         <EditText
             android:hint="패스워드"
             android:id="@+id/signupActivity_password"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
