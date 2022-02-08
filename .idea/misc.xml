@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/ic__account.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/ic_message.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/ic_mpti_logo.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_signup.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_splash.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/fragment_people.xml" value="0.1375" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/item_friend.xml" value="0.1375" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/menu/bottom_navigation_main.xml" value="0.159375" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/xml/default_config.xml" value="0.2657407407407407" />
       </map>
     </option>

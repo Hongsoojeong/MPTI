@@ -54,7 +54,12 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginEvent();
+                if(id.getText().length() == 0 || password.getText().length() == 0){
+                    Toast.makeText(LoginActivity.this, "아무것도 입력되지 않았습니다", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    loginEvent();
+                }
             }
         });
 
@@ -70,6 +75,8 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(id.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
+
                 if(!task.isSuccessful()){ // 로그인 실패한 부분
                     Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
