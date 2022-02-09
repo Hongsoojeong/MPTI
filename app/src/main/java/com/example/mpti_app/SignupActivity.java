@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import com.example.mpti_app.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -76,8 +77,15 @@ public class SignupActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 UserModel userModel = new UserModel();
                                 userModel.userName = name.getText().toString();
+                                userModel.uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                                 String uid = task.getResult().getUser().getUid();
-                                FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel);
+                                FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        SignupActivity.this.finish();
+                                    }
+                                });
                             }
                         });
             }
