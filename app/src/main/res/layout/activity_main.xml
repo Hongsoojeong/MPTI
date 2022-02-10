@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <FrameLayout
+
         android:id="@+id/mainactivity_framelayout"
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
@@ -22,8 +23,8 @@
     android:id="@+id/mainactivity_bottomnavigationview"
     android:layout_alignParentBottom="true"
     app:itemBackground="@color/white"
-    app:itemTextColor="@color/main"
-    app:itemIconTint="@color/main"
+    app:itemTextColor="@drawable/bottom_ic_color"
+    app:itemIconTint="@drawable/bottom_ic_color"
     app:menu="@menu/bottom_navigation_main"
     >
 

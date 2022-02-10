@@ -6,29 +6,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".message.MessageActivity">
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/messageActivity_recyclerview"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/messageActivity_button"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentStart="true"
-    ></androidx.recyclerview.widget.RecyclerView>
-  <EditText
-      android:layout_toLeftOf="@+id/messageActivity_button"
-      android:layout_alignParentBottom="true"
-      android:layout_alignParentLeft="true"
-      android:id="@+id/messageActivity_editText"
+
+
+
+  <androidx.recyclerview.widget.RecyclerView
+
+      android:id="@+id/messageActivity_recyclerview"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
-  <Button
-    android:id="@+id/messageActivity_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="전송"
-    android:layout_alignParentBottom="true"
-      android:layout_alignParentRight="true"/>
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/linearlayoutview"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentRight="true">
+
+
+  </androidx.recyclerview.widget.RecyclerView>
+
+  <LinearLayout
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentBottom="true"
+      android:id="@+id/linearlayoutview"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_weight="10"
+      android:elevation="10dp"
+      android:background="@color/main"
+      android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/messageActivity_editText"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/messageActivity_button"
+        android:layout_weight="1"
+        android:background="@drawable/send_background"/>
+
+    <Button
+        android:id="@+id/messageActivity_button"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:padding="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="3dp"
+        android:layout_weight="13"
+        android:background="@drawable/ic_baseline_send_24"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/maruburi_bold"
+        android:gravity="center" />
+
+  </LinearLayout>
   </RelativeLayout>

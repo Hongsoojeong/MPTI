@@ -47,6 +47,7 @@
     </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:text="회원가입"
+        android:background="@drawable/ic_left_bubble"
         android:id="@+id/signupActivity_button_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

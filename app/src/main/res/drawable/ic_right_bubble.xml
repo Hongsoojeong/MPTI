@@ -2,12 +2,12 @@
     <!--<solid android:color="#dddddd"/>-->
     <gradient
         android:angle="0"
-        android:startColor="#FFFFFF"
-        android:endColor="#FFFFFF"
+        android:startColor="#FFAD9A"
+        android:endColor="#FF518D"
         android:type="linear" />
-    <corners android:bottomLeftRadius="30dp"
-        android:bottomRightRadius="30dp"
-        android:topLeftRadius="30dp"
-        android:topRightRadius="30dp"/>
+
+    <corners
+        android:bottomLeftRadius="5dp"
+        android:topLeftRadius="5dp" />
     <padding android:left="3dip" android:top="3dip" android:right="3dip" android:bottom="3dip" />
 </shape>

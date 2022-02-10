@@ -6,11 +6,5 @@
         android:startColor="#69C2FD"
         android:endColor="#6970FD"
         android:type="linear" />
-    <corners
-        android:topLeftRadius="5dp"
-        android:bottomLeftRadius="5dp"
-        android:bottomRightRadius="5dp"
-        android:topRightRadius="5dp"/>
-
     <padding android:left="3dip" android:top="3dip" android:right="3dip" android:bottom="3dip" />
 </shape>

@@ -27,10 +27,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import java.util.List;
+import java.util.TimeZone;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -42,6 +47,8 @@ public class MessageActivity extends AppCompatActivity {
     private  String chatRoomUid;
 
     private RecyclerView recyclerView;
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +86,7 @@ public class MessageActivity extends AppCompatActivity {
                     ChatModel.Comment comment = new ChatModel.Comment();
                     comment.uid = uid;
                     comment.message = editText.getText().toString();
+                    comment.timestamp= ServerValue.TIMESTAMP;
                     Log.d("button.setOnClickListener","comments");
                     FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -175,23 +183,32 @@ public class MessageActivity extends AppCompatActivity {
             if (comments.get(position).uid.equals(uid)){
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","내가 보낸 메세지");
                 messageViewHolder.textView_message.setText(comments.get(position).message);
-                messageViewHolder.textView_message.setBackgroundResource(R.drawable.ic_right_bubble); // right
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
-                Log.d("RecyclerView.ViewHoder : onBindViewHolder","INVISIBLE");
-                messageViewHolder.textView_message.setTextSize(18);
+                messageViewHolder.textView_message.setBackgroundResource(R.drawable.send_background);
+                messageViewHolder.linearLayout_message.setGravity(Gravity.RIGHT);
+                messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
+
+
             }
             //상대방이 보낸 메세지
             else{
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+userModel.userName);
                 messageViewHolder.textView_name.setText(userModel.userName);
-                messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.ic_left_bubble);
                 messageViewHolder.textView_message.setText(comments.get(position).message);
-                messageViewHolder.textView_message.setTextSize(18);
+                messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
+                messageViewHolder.textView_message.setTextSize(15);
+                messageViewHolder.linearLayout_message.setGravity(Gravity.LEFT);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
 
             }
+            Log.d("before unixTime", "before");
+            long unixTime = (long) comments.get(position).timestamp;
+            Date date = new Date(unixTime);
+            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+            String time = simpleDateFormat.format(date);
+            messageViewHolder.textView_timestamp.setText(time);
         }
 
         @Override
@@ -204,14 +221,23 @@ public class MessageActivity extends AppCompatActivity {
             public TextView textView_name;
             public LinearLayout linearLayout_destination;
             public LinearLayout linearLayout_main;
+            public TextView textView_timestamp;
+            public LinearLayout linearLayout_message;
 
             public MessageViewHolder(View view) {
                 super(view);
                 textView_message = view.findViewById(R.id.messageItem_textView_message);
                 textView_name=(TextView)view.findViewById(R.id.messageItem_textView_name);
                 linearLayout_destination =(LinearLayout)view.findViewById(R.id.messageItem_LinearLayout_destination);
+                linearLayout_message =(LinearLayout)view.findViewById(R.id.item_message_linearLayout);
                 linearLayout_main = (LinearLayout)view.findViewById(R.id.messageItem_linearlayout_main);
+                textView_timestamp = (TextView) view.findViewById(R.id.messageItem_textview_timestap);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        finish();
     }
 }

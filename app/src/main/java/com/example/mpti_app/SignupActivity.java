@@ -41,9 +41,6 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-        String splash_background = mFirebaseRemoteConfig.getString("splash_background");
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            getWindow().setStatusBarColor(Color.parseColor(splash_background));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
@@ -60,8 +57,6 @@ public class SignupActivity extends AppCompatActivity {
         name = (EditText)findViewById(R.id.signupActivity_name);
         password = (EditText)findViewById(R.id.signupActivity_password);
         signup = (Button) findViewById(R.id.signupActivity_button_signup);
-
-        signup.setBackgroundColor(Color.parseColor(splash_background));
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
