@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,8 @@ import android.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.R;
 import com.example.mpti_app.message.MessageActivity;
 import com.example.mpti_app.model.UserModel;
@@ -80,6 +83,11 @@ public class PeopleFragment extends Fragment {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder,  final int position) {
 
+            Glide.with
+                    (holder.itemView.getContext())
+                    .load(userModels.get(position).profileImageUrl)
+                    .apply(new RequestOptions().circleCrop())
+                    .into(((CustomViewHolder)holder).imageView);
             ((CustomViewHolder)holder).textView.setText(userModels.get(position).userName);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,8 +111,10 @@ public class PeopleFragment extends Fragment {
 
         private class CustomViewHolder extends RecyclerView.ViewHolder{
            public TextView textView;
+           public ImageView imageView;
             public CustomViewHolder(@NonNull View view) {
                 super(view);
+                imageView = view.findViewById(R.id.frienditem_imageview);
                 textView = (TextView) view.findViewById(R.id.frienditem_textview);
                 Log.d("customViewHolder","textview");
             }

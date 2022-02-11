@@ -10,9 +10,10 @@
 
     <ImageView
         android:id="@+id/sinupActivity_imageview_profile"
+        android:src="@drawable/ic_baseline_photo_size_select_actual_24"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="50dp"/>
+        android:layout_margin="50dp" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

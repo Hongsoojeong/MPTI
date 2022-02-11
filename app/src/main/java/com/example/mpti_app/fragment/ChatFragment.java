@@ -17,6 +17,8 @@ import android.app.Fragment;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.LoginActivity;
 import com.example.mpti_app.MainActivity;
 import com.example.mpti_app.R;
@@ -104,6 +106,8 @@ public class ChatFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     UserModel userModel = dataSnapshot.getValue(UserModel.class);
+
+
                     customViewHolder.textView_title.setText(userModel.userName);
                 }
 

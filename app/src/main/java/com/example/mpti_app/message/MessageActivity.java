@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.R;
 import com.example.mpti_app.model.ChatModel;
 import com.example.mpti_app.model.UserModel;
@@ -127,6 +129,9 @@ public class MessageActivity extends AppCompatActivity {
         UserModel userModel;
         public RecyclerViewAdapter() {
             comments = new ArrayList<>();
+
+
+
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -193,6 +198,10 @@ public class MessageActivity extends AppCompatActivity {
             }
             //상대방이 보낸 메세지
             else{
+                Glide.with(holder.itemView.getContext())
+                        .load(userModel.profileImageUrl)
+                        .apply(new RequestOptions().circleCrop())
+                        .into(messageViewHolder.imageView_profile);
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+userModel.userName);
                 messageViewHolder.textView_name.setText(userModel.userName);
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.ic_left_bubble);
@@ -217,6 +226,7 @@ public class MessageActivity extends AppCompatActivity {
         }
         private class MessageViewHolder extends  RecyclerView.ViewHolder{
 
+            public ImageView imageView_profile;
             public TextView textView_message;
             public TextView textView_name;
             public LinearLayout linearLayout_destination;
@@ -226,6 +236,7 @@ public class MessageActivity extends AppCompatActivity {
 
             public MessageViewHolder(View view) {
                 super(view);
+                imageView_profile = (ImageView) view.findViewById(R.id.messageItem_imageview_profile);
                 textView_message = view.findViewById(R.id.messageItem_textView_message);
                 textView_name=(TextView)view.findViewById(R.id.messageItem_textView_name);
                 linearLayout_destination =(LinearLayout)view.findViewById(R.id.messageItem_LinearLayout_destination);
