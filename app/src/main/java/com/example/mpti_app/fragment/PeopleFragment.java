@@ -97,8 +97,8 @@ public class PeopleFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-
-
+            if (userModels.get(position).comment!=null)
+            ((CustomViewHolder)holder).textView_comment.setText(userModels.get(position).comment);
 
 
         }
@@ -112,10 +112,12 @@ public class PeopleFragment extends Fragment {
         private class CustomViewHolder extends RecyclerView.ViewHolder{
            public TextView textView;
            public ImageView imageView;
+           public TextView textView_comment;
             public CustomViewHolder(@NonNull View view) {
                 super(view);
                 imageView = view.findViewById(R.id.frienditem_imageview);
                 textView = (TextView) view.findViewById(R.id.frienditem_textview);
+                textView_comment = (TextView) view.findViewById(R.id.frienditem_textview_comment);
                 Log.d("customViewHolder","textview");
             }
         }

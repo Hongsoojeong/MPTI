@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         firebaseRemoteConfig=firebaseRemoteConfig.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.signOut();
+   //     firebaseAuth.signOut();
 
 
      id = (EditText) findViewById(R.id.loginActivity_edittext_id);
@@ -110,9 +110,18 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("onStart","사용전");
 
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if(currentUser != null){
-            currentUser.reload();
-        }    }
+
+        if(currentUser != null){ // 자동로그인
+
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+       //     currentUser.reload(); //자동로그인 없애는는
+                }
+
+
+    }
 
     @Override
     protected void onStop() {

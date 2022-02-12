@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
@@ -36,7 +37,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 public class MessageActivity extends AppCompatActivity {
@@ -49,7 +52,12 @@ public class MessageActivity extends AppCompatActivity {
     private  String chatRoomUid;
 
     private RecyclerView recyclerView;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+
+
+    private DatabaseReference databaseReference;
+    private ValueEventListener valueEventListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,18 +158,31 @@ public class MessageActivity extends AppCompatActivity {
 
 
         void getMessageList(){
-            FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").addValueEventListener(new ValueEventListener() {
+
+            databaseReference= FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments");
+            valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     comments.clear();
+                    Map<String,Object> readUsersMap = new HashMap<>();
 
                     for (DataSnapshot item : dataSnapshot.getChildren()){
+
+                        String key = item.getKey();
+                        ChatModel.Comment comment = item.getValue(ChatModel.Comment.class);
+                        comment.readUsers.put(uid, true);
+
+                        readUsersMap.put(key,comment);
                         comments.add(item.getValue(ChatModel.Comment.class));
                     }
-                    // 메세지가 갱신
-                    notifyDataSetChanged();
+                    FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").updateChildren(readUsersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            notifyDataSetChanged();                    // 메세지가 갱신
+                            recyclerView.scrollToPosition(comments.size()-1);
 
-                    recyclerView.scrollToPosition(comments.size()-1);
+                        }
+                    });
 
                 }
 
@@ -193,6 +214,7 @@ public class MessageActivity extends AppCompatActivity {
                 messageViewHolder.linearLayout_message.setGravity(Gravity.RIGHT);
                 messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
+                setReadCounter(position, messageViewHolder.textView_readCounter_left);
 
 
             }
@@ -210,6 +232,7 @@ public class MessageActivity extends AppCompatActivity {
                 messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.linearLayout_message.setGravity(Gravity.LEFT);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
+                setReadCounter(position, messageViewHolder.textView_readCounter_right);
 
             }
             Log.d("before unixTime", "before");
@@ -218,6 +241,27 @@ public class MessageActivity extends AppCompatActivity {
             simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
             String time = simpleDateFormat.format(date);
             messageViewHolder.textView_timestamp.setText(time);
+
+        }
+        void setReadCounter(int position, TextView textView){
+                FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map<String,Boolean> users = (Map<String, Boolean>) dataSnapshot.getValue();
+                        int count = users.size() - comments.get(position).readUsers.size();
+                        if (count>0){
+                            textView.setVisibility(View.VISIBLE);
+                            textView.setText(String.valueOf(count));
+                        }else{
+                            textView.setVisibility(View.INVISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
         }
 
         @Override
@@ -234,6 +278,9 @@ public class MessageActivity extends AppCompatActivity {
             public TextView textView_timestamp;
             public LinearLayout linearLayout_message;
 
+            public TextView textView_readCounter_left;
+            public TextView textView_readCounter_right;
+
             public MessageViewHolder(View view) {
                 super(view);
                 imageView_profile = (ImageView) view.findViewById(R.id.messageItem_imageview_profile);
@@ -243,12 +290,15 @@ public class MessageActivity extends AppCompatActivity {
                 linearLayout_message =(LinearLayout)view.findViewById(R.id.item_message_linearLayout);
                 linearLayout_main = (LinearLayout)view.findViewById(R.id.messageItem_linearlayout_main);
                 textView_timestamp = (TextView) view.findViewById(R.id.messageItem_textview_timestap);
+                textView_readCounter_left= (TextView) view.findViewById(R.id.messageItem_textview_readCounter_left);
+                textView_readCounter_right= (TextView) view.findViewById(R.id.messageItem_textview_readCounter_right);
             }
         }
     }
 
     @Override
     public void onBackPressed(){
+        databaseReference.removeEventListener(valueEventListener);
         finish();
     }
 }

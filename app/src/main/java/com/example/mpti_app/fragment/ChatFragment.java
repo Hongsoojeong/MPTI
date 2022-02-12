@@ -107,7 +107,10 @@ public class ChatFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     UserModel userModel = dataSnapshot.getValue(UserModel.class);
 
-
+                    Glide.with(customViewHolder.imageView.getContext())
+                            .load(userModel.profileImageUrl)
+                            .apply(new RequestOptions().circleCrop())
+                            .into(customViewHolder.imageView);
                     customViewHolder.textView_title.setText(userModel.userName);
                 }
 
@@ -152,6 +155,7 @@ public class ChatFragment extends Fragment {
             public TextView textView_timestamp;
             public CustomViewHolder(View view) {
                 super(view);
+                imageView =(ImageView) view.findViewById(R.id.chatitem_imageview);
                 textView_title=(TextView)view.findViewById(R.id.chatitem_textview_title);
                 textView_last_message=(TextView)view.findViewById(R.id.chatitem_chatitem_textview_lastMessage);
                 textView_timestamp = (TextView) view.findViewById(R.id.chatitem_textview_timestamp);

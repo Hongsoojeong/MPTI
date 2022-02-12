@@ -27,15 +27,20 @@
   <LinearLayout
       android:layout_alignParentLeft="true"
       android:layout_alignParentBottom="true"
+
       android:id="@+id/linearlayoutview"
       android:orientation="horizontal"
+
       android:layout_width="match_parent"
       android:layout_weight="10"
       android:elevation="10dp"
       android:background="@color/main"
-      android:layout_height="wrap_content">
+      android:layout_height="30dp">
 
     <EditText
+        android:gravity="top|left"
+        android:lineSpacingExtra="2sp"
+        android:textSize="15dp"
         android:layout_marginTop="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"

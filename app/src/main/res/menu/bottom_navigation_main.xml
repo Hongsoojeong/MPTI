@@ -12,4 +12,5 @@
         android:id="@+id/action_account"
         android:icon="@drawable/ic__account"
         android:title="Account"/>
+
 </menu>
