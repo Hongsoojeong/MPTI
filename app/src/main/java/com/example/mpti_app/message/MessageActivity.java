@@ -57,6 +57,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
     private ValueEventListener valueEventListener;
+    int peopleCount=0;
 
 
     @Override
@@ -165,25 +166,32 @@ public class MessageActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     comments.clear();
                     Map<String,Object> readUsersMap = new HashMap<>();
-
                     for (DataSnapshot item : dataSnapshot.getChildren()){
-
                         String key = item.getKey();
-                        ChatModel.Comment comment = item.getValue(ChatModel.Comment.class);
-                        comment.readUsers.put(uid, true);
+                        ChatModel.Comment comment_origin = item.getValue(ChatModel.Comment.class);
+                        ChatModel.Comment comment_modify = item.getValue(ChatModel.Comment.class);
 
-                        readUsersMap.put(key,comment);
-                        comments.add(item.getValue(ChatModel.Comment.class));
+                        comment_modify.readUsers.put(uid, true);
+
+                        readUsersMap.put(key,comment_modify);
+                        comments.add(comment_origin);
                     }
-                    FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").updateChildren(readUsersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            notifyDataSetChanged();                    // 메세지가 갱신
-                            recyclerView.scrollToPosition(comments.size()-1);
 
-                        }
-                    });
+                    if(comments.size() == 0){ return;}
 
+                    if (!comments.get(comments.size() - 1).readUsers.containsKey(uid)) {
+                        FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments")
+                            .updateChildren(readUsersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    notifyDataSetChanged();
+                                    recyclerView.scrollToPosition(comments.size() - 1);
+                                }
+                            });
+                    } else {
+                        notifyDataSetChanged();
+                        recyclerView.scrollToPosition(comments.size() - 1);
+                    }
                 }
 
                 @Override
@@ -244,14 +252,16 @@ public class MessageActivity extends AppCompatActivity {
 
         }
         void setReadCounter(int position, TextView textView){
+            if (peopleCount ==0){
                 FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         Map<String,Boolean> users = (Map<String, Boolean>) dataSnapshot.getValue();
-                        int count = users.size() - comments.get(position).readUsers.size();
+                        peopleCount = users.size();
+                        int count = peopleCount - comments.get(position).readUsers.size();
                         if (count>0){
-                            textView.setVisibility(View.VISIBLE);
                             textView.setText(String.valueOf(count));
+                            textView.setVisibility(View.VISIBLE);
                         }else{
                             textView.setVisibility(View.INVISIBLE);
                         }
@@ -262,6 +272,16 @@ public class MessageActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+            else{
+                int count = peopleCount - comments.get(position).readUsers.size();
+                if (count>0){
+                    textView.setText(String.valueOf(count));
+                    textView.setVisibility(View.VISIBLE);
+                }else{
+                    textView.setVisibility(View.INVISIBLE);
+                }
+            }
         }
 
         @Override
