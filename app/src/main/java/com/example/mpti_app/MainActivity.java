@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.mpti_app.fragment.AccountFragment;
 import com.example.mpti_app.fragment.ChatFragment;
+import com.example.mpti_app.fragment.MainFragment;
 import com.example.mpti_app.fragment.PeopleFragment;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
                    case R.id.action_account:
                        getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new AccountFragment()).commit();
                        return true;
-
+                   case R.id.action_test:
+                       getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new MainFragment()).commit();
 
                }
                 return false;

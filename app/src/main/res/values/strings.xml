@@ -1,4 +1,24 @@
 <resources>
     <string name="app_name">MPTI</string>
     <string name="rc_color">splash_background</string>
+        <string name="main_title">당신의 페르소나에 대해\n알아보는 시간</string>
+        <string name="result_title">당신의 페르소나는...</string>
+
+        <string name="friendship_q01">즉흥적인 것보다 짜여진 틀을\n좋아합니다.</string>
+        <string name="friendship_q02">책,영화 등의 결말을 새롭게\n해석하는 것을 좋아합니다.</string>
+        <string name="friendship_q03">과정 속에서 발생되는 감정보다\n원인과 결과를 중요시합니다.</string>
+        <string name="friendship_q04">내성적이고 조용한 편입니다.</string>
+        <string name="friendship_q05">잡생각과 호기심이 많습니다.</string>
+        <string name="friendship_q06">계획을 지키지 못하면\n스스로에게 화가납니다.</string>
+        <string name="friendship_q07">여행을 갈때 계획을 꼼꼼히 세웁니다.</string>
+        <string name="friendship_q08">대화를 먼저 시작하지 않는 편입니다.</string>
+        <string name="friendship_q09">결정을 내릴때는 가슴보다\n논리적으로 생각합니다.</string>
+        <string name="friendship_q10">사람이 태어난 이유에 대해\n궁금해합니다.</string>
+        <string name="friendship_q11">사람들의 생각보다 사실이\n더 중요합니다.</string>
+        <string name="friendship_q12">새로운곳에서 금방 잘\n적응하지 못합니다.</string>
+
+        <string name="yes">YES</string>
+        <string name="no">NO</string>
+        <!-- TODO: Remove or change this placeholder text -->
+        <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,16 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<Button
-    android:text="현재 상태 메세지"
-    android:id="@+id/accountFragment_butto_comment"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/account_background"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/main"/>
+
+    <ImageView
+        android:id="@+id/AccountFragment_profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/Fragment_account_profile"
+        android:layout_marginEnd="264dp"
+        android:src="@drawable/ic__account"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <TextView
+        android:id="@+id/Fragment_account_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_above="@+id/AccountFragment_profile_image"
+        />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="379dp" />
+<LinearLayout
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <Button
-        android:text="로그아웃"
+        android:id="@+id/accountFragment_butto_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/AccountFragment_profile_image"
+        android:text="현재 상태 메세지"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/accountFragment_butto_logout"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="645dp" />
+
+    <Button
         android:id="@+id/accountFragment_butto_logout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_toRightOf="@+id/accountFragment_butto_comment"
+        android:text="로그아웃"
+        app:layout_constraintEnd_toStartOf="@+id/accountFragment_butto_comment"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="645dp" />
+</LinearLayout>
+
+
 </LinearLayout>

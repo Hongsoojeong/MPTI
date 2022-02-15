@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.mpti_app.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/item_test" >
+        <action
+            android:id="@+id/action_mainFragment_to_friendship_q01"
+            app:destination="@id/friendship_q01" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendship_q01"
+        android:name="com.example.mpti_app.fragment.Friendship_q01"
+        android:label="fragment_friendship_q01"
+        tools:layout="@layout/fragment_friendship_q01" >
+        <action
+            android:id="@+id/action_friendship_q01_to_freindship_q02" />
+    </fragment>
+</navigation>

@@ -3,14 +3,24 @@
     <item
         android:id="@+id/action_people"
         android:icon="@drawable/ic_people"
+        android:enabled="true"
         android:title="People"/>
     <item
         android:id="@+id/action_chat"
         android:icon="@drawable/ic_message"
+        android:enabled="true"
         android:title="Chat"/>
     <item
+        android:id="@+id/action_test"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:enabled="true"
+        android:title="Test"
+        />
+    <item
+        android:enabled="true"
         android:id="@+id/action_account"
         android:icon="@drawable/ic__account"
         android:title="Account"/>
+
 
 </menu>
