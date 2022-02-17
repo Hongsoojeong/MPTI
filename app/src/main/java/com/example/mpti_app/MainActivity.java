@@ -17,7 +17,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,18 +51,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        passPushTokenToServer();
     }
-void passPushTokenToServer(){
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Task<String> token =  FirebaseMessaging.getInstance().getToken();
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("pushToken",token);
-
-        FirebaseDatabase.getInstance().getReference().child("useres").child(uid).updateChildren(map);
-
-}
     }
 
 

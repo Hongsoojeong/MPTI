@@ -11,15 +11,16 @@
         android:id="@+id/account_background"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/main"/>
+        android:background="#D5D7FF"/>
 
     <ImageView
+
         android:id="@+id/AccountFragment_profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/Fragment_account_profile"
         android:layout_marginEnd="264dp"
-        android:src="@drawable/ic__account"
+        android:src="@drawable/ic_baseline_image_24"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="237dp" />
@@ -45,11 +46,13 @@
     android:orientation="horizontal">
 
     <Button
+        android:textStyle="bold"
+        android:textColor="#515151"
         android:id="@+id/accountFragment_butto_comment"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/AccountFragment_profile_image"
-        android:text="현재 상태 메세지"
+        android:text="상태 메세지 변경"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/accountFragment_butto_logout"
@@ -57,9 +60,11 @@
         tools:layout_editor_absoluteY="645dp" />
 
     <Button
+        android:textColor="#515151"
+        android:textStyle="bold"
         android:id="@+id/accountFragment_butto_logout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginEnd="32dp"
         android:layout_toRightOf="@+id/accountFragment_butto_comment"
         android:text="로그아웃"

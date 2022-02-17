@@ -1,5 +1,6 @@
 package com.example.mpti_app.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,13 +12,13 @@ import androidx.annotation.Nullable;
 
 import com.example.mpti_app.R;
 
-public class Friendship_q02 extends Fragment {
+public class Friendship_q03 extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_friendship_q02, container, false);
+        View view = inflater.inflate(R.layout.fragment_friendship_q03, container, false);
 
-        TextView option1 = (TextView) view.findViewById(R.id.q01_option2Y);
-        TextView option2 = (TextView) view.findViewById(R.id.q01_option2N);
+        TextView option1 = (TextView) view.findViewById(R.id.q01_option3Y);
+        TextView option2 = (TextView) view.findViewById(R.id.q01_option3N);
 
         option1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,9 +33,6 @@ public class Friendship_q02 extends Fragment {
             }
         });
 
-
-
         return view;
     }
-
 }

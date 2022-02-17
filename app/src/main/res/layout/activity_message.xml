@@ -27,10 +27,8 @@
   <LinearLayout
       android:layout_alignParentLeft="true"
       android:layout_alignParentBottom="true"
-
       android:id="@+id/linearlayoutview"
       android:orientation="horizontal"
-
       android:layout_width="match_parent"
       android:layout_weight="10"
       android:elevation="10dp"

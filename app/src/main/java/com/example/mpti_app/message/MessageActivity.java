@@ -234,7 +234,7 @@ public class MessageActivity extends AppCompatActivity {
                         .into(messageViewHolder.imageView_profile);
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+userModel.userName);
                 messageViewHolder.textView_name.setText(userModel.userName);
-                messageViewHolder.textView_message.setBackgroundResource(R.drawable.ic_left_bubble);
+                messageViewHolder.textView_message.setBackgroundResource(R.drawable.simple_bubble);
                 messageViewHolder.textView_message.setText(comments.get(position).message);
                 messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
                 messageViewHolder.textView_message.setTextSize(15);

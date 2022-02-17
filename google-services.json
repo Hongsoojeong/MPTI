@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "68855889265",
+    "firebase_url": "https://mpti-app-default-rtdb.firebaseio.com",
     "project_id": "mpti-app",
     "storage_bucket": "mpti-app.appspot.com"
   },

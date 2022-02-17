@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <ImageView
-    android:src="@drawable/ic_mpti_logo"
-    android:background="@color/main"
+    android:padding="16dp"
+    android:src="@drawable/logo"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="65dp"/>
     <EditText
         android:id="@+id/commentDialog_edittext"
         android:hint="상태 메세지를 입력하세요"
+        android:backgroundTint = "@color/main"
         android:layout_margin="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

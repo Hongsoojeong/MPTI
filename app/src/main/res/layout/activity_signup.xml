@@ -10,15 +10,17 @@
 
     <ImageView
         android:id="@+id/sinupActivity_imageview_profile"
-        android:src="@drawable/ic_baseline_photo_size_select_actual_24"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:src="@drawable/image_upload"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_margin="50dp" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <EditText
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:backgroundTint = "@color/main"
             android:hint="이메일"
             android:id="@+id/signupActivity_email"
             android:layout_width="match_parent"
@@ -29,6 +31,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:backgroundTint = "@color/main"
             android:hint="이름"
             android:id="@+id/signupActivity_name"
             android:layout_width="match_parent"
@@ -39,6 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:backgroundTint = "@color/main"
             android:hint="패스워드"
             android:id="@+id/signupActivity_password"
             android:inputType="textPassword"
@@ -47,6 +55,11 @@
 
     </com.google.android.material.textfield.TextInputLayout>
     <Button
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:text="회원가입"
         android:background="@drawable/ic_left_bubble"
         android:id="@+id/signupActivity_button_signup"

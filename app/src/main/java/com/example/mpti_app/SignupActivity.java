@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mpti_app.model.UserModel;
@@ -73,9 +74,15 @@ public class SignupActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (email.getText().toString() == null || name.getText().toString() == null || password.getText().toString() == null) {
+
+                if (email.getText().length() == 0 || name.getText().length() == 0 || password.getText().length() == 0){
+                    Toast.makeText(SignupActivity.this, "아무것도 입력되지 않았습니다", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Log.d("onClick : ", String.valueOf(email.getText()));
+                Log.d("onClick : ",String.valueOf(name.getText()));
+                Log.d("onClick : ",String.valueOf(password.getText()));
+
                 FirebaseAuth.getInstance()
                         .createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
@@ -118,6 +125,8 @@ public class SignupActivity extends AppCompatActivity {
             }
 
         });
+
+
     }
 
 

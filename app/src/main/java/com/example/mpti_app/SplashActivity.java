@@ -15,6 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
@@ -27,6 +32,11 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+      //  FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //    database.useEmulator("10.0.2.2", 9000);
+
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -54,6 +64,26 @@ public class SplashActivity extends AppCompatActivity {
                             Toast.makeText(SplashActivity.this, "Fetch failed",
                                     Toast.LENGTH_SHORT).show();
                         }
+
+                        DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+                        connectedRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                boolean connected = snapshot.getValue(Boolean.class);
+                                if (connected) {
+                                    Log.d(TAG, "connected");
+                                } else {
+                                    Log.d(TAG, "not connected");
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Log.w(TAG, "Listener was cancelled");
+                            }
+                        });
+
+
                         displayMessage();
 
                     }

@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,MainActivity.class)); //연결이 되지않아 강제로 넘기기
                 if(id.getText().length() == 0 || password.getText().length() == 0){
                     Toast.makeText(LoginActivity.this, "아무것도 입력되지 않았습니다", Toast.LENGTH_SHORT).show();
                     return;
