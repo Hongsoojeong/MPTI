@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/friendship_q01"
-        android:name="com.example.mpti_app.fragment.Friendship_q01"
+        android:name="com.example.mpti_app.fragment.friendship.Friendship_q01"
         android:label="fragment_friendship_q01"
         tools:layout="@layout/fragment_friendship_q01" >
         <action

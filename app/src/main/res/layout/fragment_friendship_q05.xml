@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragment.friendship.Friendship_q01">
+    tools:context=".fragment.friendship.Friendship_q05">
 
     <TextView
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:text="@string/friendship_q01"
-        android:textColor="@color/main"
-        android:textStyle="bold"
         android:layout_marginTop="35dp"
+        android:text="@string/friendship_q05"
+        android:textColor="@color/main"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="280dp"
@@ -52,30 +53,30 @@
         app:layout_constraintVertical_bias="0.598">
 
         <TextView
-            android:id="@+id/q01_option1Y"
+            android:id="@+id/q01_option5Y"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="YES"
-            android:textStyle="bold"
             android:background="@drawable/background_color"
+            android:gravity="center"
+            android:text="@string/yes"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/q01_option1N"
+            android:id="@+id/q01_option5N"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textStyle="bold"
             android:background="@drawable/background_color"
-            android:text="NO"
+            android:gravity="center"
+            android:text="@string/no"
             android:textColor="@color/white"
             android:textSize="20dp" />
     </LinearLayout>
@@ -86,5 +87,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

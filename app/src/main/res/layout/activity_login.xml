@@ -24,38 +24,47 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="50dp"
      android:layout_width="match_parent"
-     android:layout_height="wrap_content">
+        app:hintTextColor="#81A5FF"
+        android:layout_height="wrap_content">
      <EditText
+         android:background="@drawable/edit_text"
          android:layout_marginLeft="50dp"
          android:layout_marginRight="50dp"
-
-         android:backgroundTint = "@color/main"
-
          android:layout_marginTop="50dp"
-         android:textColor="@color/main"
+         android:textStyle="bold"
+         android:textColor="#3F4045"
          android:id="@+id/loginActivity_edittext_id"
-         android:hint="아이디"
+         android:hint="Email *"
+         android:cursorVisible="false"
+         android:paddingLeft="10dp"
+         android:textSize="15dp"
          android:textColorHighlight="@color/main"
          android:textColorHint="@color/main"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"/>
+         android:layout_height="30dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="13dp"
+        app:hintTextColor="#81A5FF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
      <EditText
-         android:backgroundTint = "@color/main"
+         android:cursorVisible="false"
+         android:textStyle="bold"
+         android:paddingLeft="10dp"
+         android:background="@drawable/edit_text"
          android:layout_marginLeft="50dp"
          android:layout_marginRight="50dp"
          android:textColorHint="@color/main"
          android:layout_marginTop="20dp"
-         android:textColor="@color/main"
+         android:textColor="#3F4045"
          android:id="@+id/loginActivity_edittext_password"
-         android:hint="패스워드"
+         android:hint="password *"
+         android:textSize="15dp"
          android:inputType="textPassword"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"/>
+         android:layout_height="30dp"/>
 
  </com.google.android.material.textfield.TextInputLayout>
     <Button
@@ -83,4 +92,5 @@
         android:id="@+id/loginActivity_button_signup"
         android:layout_width="match_parent"
         android:layout_height="30dp"/>
+
 </LinearLayout>

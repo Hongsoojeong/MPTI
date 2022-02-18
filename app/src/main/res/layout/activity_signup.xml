@@ -7,51 +7,95 @@
     tools:context=".SignupActivity"
     android:gravity="center"
     android:orientation="vertical">
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="35dp"
+    android:text="Welcome to MPTI :)!"
+    android:textColor="@color/main"
+    android:textStyle="bold|italic" />
     <ImageView
         android:id="@+id/sinupActivity_imageview_profile"
         android:src="@drawable/image_upload"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="50dp" />
+    <TextView
+        android:textColor="#3F4045"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="55dp"
+        android:text="활동의 자유성을 위해\n닉네임은 MBTI로 대신합니다 :)"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="이메일 형식으로 적어주세요"
+        app:hintTextColor="#81A5FF">
+
         <EditText
+            android:inputType="textEmailAddress"
+            android:textColor="#3F4045"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:backgroundTint = "@color/main"
-            android:hint="이메일"
             android:id="@+id/signupActivity_email"
+            android:cursorVisible="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="30dp"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="여러분의 MBTI를 선택해주세요"
+        app:hintTextColor="#81A5FF"
+        android:layout_marginTop="10dp">
+
+
         <EditText
+            android:textColor="#3F4045"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:cursorVisible="false"
+            android:background="@drawable/edit_text"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:backgroundTint = "@color/main"
-            android:hint="이름"
             android:id="@+id/signupActivity_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="30dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="최소 6자 이상 설정해주세요"
+        app:hintTextColor="#81A5FF"
+        android:layout_marginTop="10dp"
+        >
+
         <EditText
+            android:textSize="15dp"
+            android:textColor="#3F4045"
+            android:textStyle="bold"
+            android:cursorVisible="false"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:backgroundTint = "@color/main"
-            android:hint="패스워드"
+            android:background="@drawable/edit_text"
+            android:paddingLeft="10dp"
             android:id="@+id/signupActivity_password"
             android:inputType="textPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="30dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <Button
@@ -60,10 +104,22 @@
         android:layout_marginRight="50dp"
         android:textStyle="bold"
         android:textColor="@color/white"
+        android:textSize="17dp"
         android:text="회원가입"
         android:background="@drawable/ic_left_bubble"
         android:id="@+id/signupActivity_button_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <ProgressBar
+        android:id="@+id/progress1"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:indeterminateTint="#71BDFF"
+        android:backgroundTint="#FFFFFF"
+        android:progressBackgroundTint="#C2EEFF"
+        android:progressTint="@color/main"
+        android:visibility="invisible" />
 </LinearLayout>

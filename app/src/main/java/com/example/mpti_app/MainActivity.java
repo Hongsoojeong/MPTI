@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.mainactivity_bottomnavigationview);
-        getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new PeopleFragment()).commit(); //첫화면을 친구목록에 뜨도록
+        getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new MainFragment()).commit(); //첫화면을 친구목록에 뜨도록
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                        return true;
                    case R.id.action_test:
                        getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new MainFragment()).commit();
+                       return true;
 
                }
                 return false;

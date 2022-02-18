@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -70,6 +71,7 @@ public class SignupActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.signupActivity_name);
         password = (EditText) findViewById(R.id.signupActivity_password);
         signup = (Button) findViewById(R.id.signupActivity_button_signup);
+        ProgressBar progress = (ProgressBar) findViewById(R.id.progress1);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +81,7 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "아무것도 입력되지 않았습니다", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                progress.setVisibility(View.VISIBLE); //프로그래스 바 보이도록
                 Log.d("onClick : ", String.valueOf(email.getText()));
                 Log.d("onClick : ",String.valueOf(name.getText()));
                 Log.d("onClick : ",String.valueOf(password.getText()));

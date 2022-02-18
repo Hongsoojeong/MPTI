@@ -57,8 +57,6 @@ public class AccountFragment extends Fragment {
                showDialog(view.getContext());
 
 
-
-
            }
        });
         return view;
