@@ -34,7 +34,7 @@
         android:text="@string/result_title"
         android:textColor="@color/main"
         android:textStyle="bold"
-        android:textSize="24dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -50,8 +50,9 @@
         android:layout_height="159dp"
         android:gravity="center"
         android:text="INTJ"
+        android:textStyle="bold"
         android:textColor="@color/main"
-        android:textSize="40dp"
+        android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,11 +61,36 @@
         app:layout_constraintVertical_bias="0.151" />
 
     <TextView
+        android:layout_marginTop="60dp"
         android:layout_width="386dp"
         android:layout_height="100dp"
         android:gravity="center"
         android:textStyle="bold"
+        android:textSize="20dp"
         android:text="당신과 환상의 궁합을 가진 페르소나는..."
         android:textColor="@color/main" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="@color/main"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:id="@+id/mbti_couple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/result_ok"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="확인"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_left_bubble"
+        />
 
 </LinearLayout>

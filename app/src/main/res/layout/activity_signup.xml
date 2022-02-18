@@ -58,10 +58,12 @@
         android:layout_height="wrap_content"
         android:hint="여러분의 MBTI를 선택해주세요"
         app:hintTextColor="#81A5FF"
+        android:id="@+id/mbti"
         android:layout_marginTop="10dp">
 
 
         <EditText
+            android:focusable="false"
             android:textColor="#3F4045"
             android:textSize="15dp"
             android:textStyle="bold"
@@ -105,6 +107,7 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="17dp"
+        android:visibility="invisible"
         android:text="회원가입"
         android:background="@drawable/ic_left_bubble"
         android:id="@+id/signupActivity_button_signup"

@@ -2,6 +2,7 @@ package com.example.mpti_app.fragment.friendship;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class Friendship_q04 extends Fragment {
             @Override
             public void onClick(View view) {
                 TestModel.I++;
+                Log.d("I",String.valueOf(TestModel.I));
                 getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new Friendship_q05()).commit();
             }
         });
@@ -31,6 +33,7 @@ public class Friendship_q04 extends Fragment {
             @Override
             public void onClick(View view) {
                 TestModel.E++;
+                Log.d("E",String.valueOf(TestModel.E));
                 getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new Friendship_q05()).commit();
             }
         });

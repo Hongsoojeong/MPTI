@@ -3,18 +3,18 @@
     <string name="main_title">당신의 페르소나에 대해\n알아보는 시간</string>
     <string name="result_title">당신의 페르소나는...</string>
 
-    <string name="friendship_q01">Q. 즉흥적인 것보다\n 짜여진 틀을 좋아합니다.</string>
-    <string name="friendship_q02">Q 책,영화 등의 결말을\n 새롭게 해석하는 것을 좋아합니다.</string>
-    <string name="friendship_q03">Q 과정 속에서 발생되는 감정보다\n 원인과 결과를 중요시합니다.</string>
-    <string name="friendship_q04">Q 내성적이고 조용한 편입니다.</string>
-    <string name="friendship_q05">Q 잡생각과 호기심이 많습니다.</string>
-    <string name="friendship_q06">Q 계획을 지키지 못하면\n스스로에게 화가납니다.</string>
-    <string name="friendship_q07">Q 여행을 갈때 \n 계획을 꼼꼼히 세웁니다.</string>
-    <string name="friendship_q08">Q 대화를 먼저 \n 시작하지 않는 편입니다.</string>
-    <string name="friendship_q09">Q 결정을 내릴때는 \n 가슴보다 논리적으로 생각합니다.</string>
-    <string name="friendship_q10">Q 사람이 태어난 이유에\n 대해 궁금해합니다.</string>
-    <string name="friendship_q11">Q 사람들의 생각보다\n 사실이 더 중요합니다.</string>
-    <string name="friendship_q12">Q 새로운곳에서 \n 금방 잘 적응하지 못합니다.</string>
+    <string name="friendship_q01">Q1. 즉흥적인 것보다\n 짜여진 틀을 좋아합니다.</string>
+    <string name="friendship_q02">Q2. 책,영화 등의 결말을\n 새롭게 해석하는 것을 좋아합니다.</string>
+    <string name="friendship_q03">Q3. 과정 속에서 발생되는 감정보다\n 원인과 결과를 중요시합니다.</string>
+    <string name="friendship_q04">Q4. 내성적이고 조용한 편입니다.</string>
+    <string name="friendship_q05">Q5. 잡생각과 호기심이 많습니다.</string>
+    <string name="friendship_q06">Q6. 계획을 지키지 못하면\n스스로에게 화가납니다.</string>
+    <string name="friendship_q07">Q7. 여행을 갈때 \n 계획을 꼼꼼히 세웁니다.</string>
+    <string name="friendship_q08">Q8. 대화를 먼저 \n 시작하지 않는 편입니다.</string>
+    <string name="friendship_q09">Q9. 결정을 내릴때는 \n 가슴보다 논리적으로 생각합니다.</string>
+    <string name="friendship_q10">Q10. 사람이 태어난 이유에\n 대해 궁금해합니다.</string>
+    <string name="friendship_q11">Q11. 사람들의 생각보다\n 사실이 더 중요합니다.</string>
+    <string name="friendship_q12">Q12. 새로운곳에서 \n 금방 잘 적응하지 못합니다.</string>
 
     <string name="love_q01">타인과의 약속을 명시적으로 하고\n그것을 이행하기를 기대합니다.</string>
     <string name="love_q02">어떤 일에 있어\n몸이 먼저 나서는 편은 아닙니다.</string>

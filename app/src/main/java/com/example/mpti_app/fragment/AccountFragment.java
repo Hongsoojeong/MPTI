@@ -75,9 +75,6 @@ public class AccountFragment extends Fragment {
         EditText editText = view.findViewById(R.id.commentDialog_edittext);
 
 
-
-
-
         builder.setView(view).setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.mainactivity_bottomnavigationview);
         getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new MainFragment()).commit(); //첫화면을 친구목록에 뜨도록
 
+
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
