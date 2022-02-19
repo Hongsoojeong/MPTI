@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragment.friendship.Friendship_Result">
+    tools:context=".fragment.love.love_Result">
 
     <TextView
         android:layout_gravity="center"
@@ -19,7 +19,7 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="15dp"
-        android:text="Friendship"
+        android:text="Love"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

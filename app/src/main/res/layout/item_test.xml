@@ -44,6 +44,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:textStyle="bold"
         android:id="@+id/friendship_test_button"
         android:layout_width="match_parent"
@@ -54,6 +55,7 @@
         android:background="@drawable/background_color"
         android:text="Friendship MPTI Test 시작하기"/>
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:textColor="@color/white"
         android:background="@drawable/background_color"
         android:layout_marginTop="10dp"
@@ -65,6 +67,7 @@
         android:layout_height="wrap_content"
         android:text="Love MPTI Test 시작하기" />
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:textColor="@color/white"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"

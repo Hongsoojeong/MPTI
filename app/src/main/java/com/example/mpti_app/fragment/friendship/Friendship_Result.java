@@ -18,7 +18,7 @@ import com.example.mpti_app.fragment.MainFragment;
 import com.example.mpti_app.fragment.PeopleFragment;
 import com.example.mpti_app.test.TestModel;
 
-public class Result extends Fragment {
+public class Friendship_Result extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_friendship_result, container, false);
         TextView textView = (TextView) view.findViewById(R.id.friendship_result);

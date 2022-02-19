@@ -85,6 +85,7 @@ public class SignupActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.signupActivity_name);
         password = (EditText) findViewById(R.id.signupActivity_password);
         signup = (Button) findViewById(R.id.signupActivity_button_signup);
+
         ProgressBar progress = (ProgressBar) findViewById(R.id.progress1);
         TextInputLayout textinputlayout = (TextInputLayout) findViewById(R.id.mbti);
 

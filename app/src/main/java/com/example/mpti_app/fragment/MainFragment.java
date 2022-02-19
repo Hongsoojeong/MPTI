@@ -15,6 +15,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.mpti_app.R;
 import com.example.mpti_app.fragment.friendship.Friendship_q01;
+import com.example.mpti_app.fragment.love.love_q01;
+import com.example.mpti_app.fragment.work.work_q01;
 import com.example.mpti_app.test.ShopImagePagerAdapter;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -33,7 +35,10 @@ public class MainFragment extends Fragment {
 
         Context context = view.getContext();
 
-        Button button = (Button) view.findViewById(R.id.friendship_test_button);
+        Button friendship = (Button) view.findViewById(R.id.friendship_test_button);
+        Button love = (Button) view.findViewById(R.id.love_test_button);
+        Button work = (Button) view.findViewById(R.id.work_test_button);
+
         pager = (ViewPager) view.findViewById(R.id.pager_images);
         pagerAdapter = new ShopImagePagerAdapter(context);
         pager.setAdapter(pagerAdapter);
@@ -44,12 +49,29 @@ public class MainFragment extends Fragment {
 
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+        friendship.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new Friendship_q01()).commit();
             }
         });
+
+        love.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new love_q01()).commit();
+            }
+        });
+
+        work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new work_q01()).commit();
+            }
+        });
+
+
+
         return view;
     }
 }

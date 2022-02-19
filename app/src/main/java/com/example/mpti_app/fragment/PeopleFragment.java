@@ -50,7 +50,8 @@ public class PeopleFragment extends Fragment {
 
         public PeopleFragmentRecyclerViewAdapter() {
             userModels = new ArrayList<>();
-            final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
             FirebaseDatabase.getInstance().getReference().child("users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
