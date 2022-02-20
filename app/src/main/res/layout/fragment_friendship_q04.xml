@@ -13,6 +13,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:textStyle="bold"
+        android:fontFamily="@font/red_hat"
         android:layout_marginTop="35dp"
         android:text="@string/friendship_q04"
         android:textColor="@color/main"
@@ -54,6 +55,7 @@
 
         <TextView
             android:id="@+id/q01_option4Y"
+            android:fontFamily="@font/red_hat"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="60dp"
@@ -68,6 +70,7 @@
 
         <TextView
             android:textStyle="bold"
+            android:fontFamily="@font/red_hat"
             android:id="@+id/q01_option4N"
             android:layout_width="match_parent"
             android:layout_height="0dp"

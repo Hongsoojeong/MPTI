@@ -2,6 +2,7 @@ package com.example.mpti_app.message;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,10 +17,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.R;
+import com.example.mpti_app.SignupActivity;
 import com.example.mpti_app.model.ChatModel;
 import com.example.mpti_app.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -81,6 +84,7 @@ public class MessageActivity extends AppCompatActivity {
                 chatModel.users.put(uid,true);
                 chatModel.users.put(destinationUid,true);
 
+
                 if (chatRoomUid==null){
                     button.setEnabled(false);
                     FirebaseDatabase.getInstance().getReference().child("chatrooms").push().setValue(chatModel).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -94,6 +98,11 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    if (editText.getText().toString().equals("")){
+                        Log.d("button.setOnClickListener","아무것도 입력되지않았습니다");
+                        Toast.makeText(view.getContext(), "아무것도 입력되지 않았습니다", android.widget.Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     ChatModel.Comment comment = new ChatModel.Comment();
                     comment.uid = uid;
                     comment.message = editText.getText().toString();
@@ -217,10 +226,12 @@ public class MessageActivity extends AppCompatActivity {
             if (comments.get(position).uid.equals(uid)){
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","내가 보낸 메세지");
                 messageViewHolder.textView_message.setText(comments.get(position).message);
+                int black = ContextCompat.getColor(MessageActivity.this, R.color.black);
+                messageViewHolder.textView_message.setTextColor(black);
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.send_background);
                 messageViewHolder.linearLayout_message.setGravity(Gravity.RIGHT);
-                messageViewHolder.textView_message.setTextSize(15);
+                messageViewHolder.textView_message.setTextSize(12);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_left);
 
@@ -233,11 +244,14 @@ public class MessageActivity extends AppCompatActivity {
                         .apply(new RequestOptions().circleCrop())
                         .into(messageViewHolder.imageView_profile);
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+userModel.userName);
+
                 messageViewHolder.textView_name.setText(userModel.userName);
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.simple_bubble);
+                int white = ContextCompat.getColor(MessageActivity.this, R.color.white);
+                messageViewHolder.textView_message.setTextColor(white);
                 messageViewHolder.textView_message.setText(comments.get(position).message);
                 messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_message.setTextSize(15);
+                messageViewHolder.textView_message.setTextSize(12);
                 messageViewHolder.linearLayout_message.setGravity(Gravity.LEFT);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_right);

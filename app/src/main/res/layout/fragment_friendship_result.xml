@@ -25,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/red_hat"
         android:id="@+id/textView2"
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
@@ -45,6 +46,7 @@
 
 
     <TextView
+        android:fontFamily="@font/red_hat"
         android:id="@+id/friendship_result"
         android:layout_width="386dp"
         android:layout_height="159dp"
@@ -61,6 +63,7 @@
         app:layout_constraintVertical_bias="0.151" />
 
     <TextView
+        android:fontFamily="@font/red_hat"
         android:layout_marginTop="60dp"
         android:layout_width="386dp"
         android:layout_height="100dp"
@@ -71,6 +74,7 @@
         android:textColor="@color/main" />
 
     <TextView
+        android:fontFamily="@font/red_hat"
         android:textStyle="bold"
         android:textColor="@color/main"
         android:layout_gravity="center"

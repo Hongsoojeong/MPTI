@@ -45,6 +45,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -94,12 +96,10 @@ public class SignupActivity extends AppCompatActivity {
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -107,7 +107,6 @@ public class SignupActivity extends AppCompatActivity {
                 email_fill[0] =true;
             }
         });
-
 
 
         final boolean[] name_fill = {false};
@@ -150,12 +149,31 @@ public class SignupActivity extends AppCompatActivity {
 
 
 
+
             signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Pattern p = Pattern.compile("^[a-zA-X0-9]@[a-zA-Z0-9].[a-zA-Z0-9]");
+                Matcher m = p.matcher((email).getText().toString());
+
+                if ( !m.matches()){
+                    Toast.makeText(SignupActivity.this, "이메일 형식으로 입력해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (password.getText().length()<6){
+                    Toast.makeText(SignupActivity.this, "6자 이상으로 입력해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (email.getText().length() == 0 || name.getText().length() == 0 || password.getText().length() == 0){
                     Toast.makeText(SignupActivity.this, "아무것도 입력되지 않았습니다", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                if(null != imageUri) {
+                    Toast.makeText(SignupActivity.this, "이미지를 선택해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -172,6 +190,7 @@ public class SignupActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 final String uid = task.getResult().getUser().getUid();
                                 Log.d("imageUri :", String.valueOf(imageUri));
+
                                 FirebaseStorage.getInstance().getReference().child("userImages").child(uid).putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -183,7 +202,6 @@ public class SignupActivity extends AppCompatActivity {
                                         while(!uriTask.isSuccessful());
                                         Uri downloadUrl = uriTask.getResult();
                                         String imageUrl = String.valueOf(downloadUrl);
-
 
 
                                         UserModel userModel = new UserModel();

@@ -8,6 +8,7 @@
     tools:context=".fragment.friendship.Friendship_q07">
 
     <TextView
+        android:fontFamily="@font/red_hat"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
         app:layout_constraintVertical_bias="0.598">
 
         <TextView
+            android:fontFamily="@font/red_hat"
             android:id="@+id/q01_option7Y"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -67,6 +69,7 @@
             android:textSize="20dp" />
 
         <TextView
+            android:fontFamily="@font/red_hat"
             android:textStyle="bold"
             android:id="@+id/q01_option7N"
             android:layout_width="match_parent"

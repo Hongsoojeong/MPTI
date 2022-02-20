@@ -25,6 +25,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.disklrucache.DiskLruCache;
@@ -32,6 +33,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.LoginActivity;
 import com.example.mpti_app.MainActivity;
 import com.example.mpti_app.R;
+import com.example.mpti_app.SignupActivity;
 import com.example.mpti_app.message.MessageActivity;
 import com.example.mpti_app.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -57,7 +59,8 @@ public class AccountFragment extends Fragment {
     private ImageView profile;
     private Uri imageUri;
     UserModel userModel;
-
+    private TextView mpti;
+    private  TextView stateMessage;
     private ValueEventListener valueEventListener;
     private DatabaseReference databaseReference;
 
@@ -72,7 +75,8 @@ public class AccountFragment extends Fragment {
         Button logout = (Button) view.findViewById(R.id.accountFragment_butto_logout);
 
         profile = (ImageView) view.findViewById(R.id.AccountFragment_profile_image);
-
+        stateMessage = (TextView) view.findViewById(R.id.state_message);
+        mpti = (TextView) view.findViewById(R.id.Fragment_account_profile_mpti);
 
        //  StorageReference storageRef = storage.getReference("image.jpg");
         // 스토리지 공간을 참조해서 이미지를 가져옴
@@ -80,8 +84,9 @@ public class AccountFragment extends Fragment {
        //  Glide.with(view).load(storageRef).into(image);
        //  Glide를 사용하여 이미지 로드
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();// FirebaseStorage 인스턴스 생성
 
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();// FirebaseStorage 인스턴스 생성
         String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         StorageReference storageRef = storage.getReferenceFromUrl("gs://mpti-app.appspot.com/userImages/" + myUid);
@@ -93,12 +98,50 @@ public class AccountFragment extends Fragment {
                     Glide.with(view.getContext())
                             .load(task.getResult())
                             .override(1024, 980)
+                            .apply(new RequestOptions().circleCrop())
                             .into(profile);
                 } else {
                     // URL을 가져오지 못하면 토스트 메세지
                 }
             }
         });
+
+
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userModel = dataSnapshot.getValue(UserModel.class);
+                mpti.setText(userModel.userName);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userModel = dataSnapshot.getValue(UserModel.class);
+                if (userModel.comment.equals("")){
+                    int grey = ContextCompat.getColor(view.getContext(), R.color.grey);
+                    stateMessage.setTextColor(grey);
+                    stateMessage.setText("상태 메세지를 설정해보세요! :)");
+                }
+                else {
+                    stateMessage.setText(userModel.comment);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
 
 
@@ -166,11 +209,6 @@ public class AccountFragment extends Fragment {
 
 
 
-
-
-
-
-
         }
     }
 
@@ -189,6 +227,8 @@ public class AccountFragment extends Fragment {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 stringObjectMap.put("comment",editText.getText().toString());
                 FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
+                Toast.makeText(view.getContext(), "상태메세지가 변경되었습니다.\n 새로고침하여 확인해보세요! :)", Toast.LENGTH_SHORT).show();
+                stateMessage.setText(userModel.comment);
             }
         }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override

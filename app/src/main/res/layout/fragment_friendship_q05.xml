@@ -16,6 +16,7 @@
         android:layout_marginTop="35dp"
         android:text="@string/friendship_q05"
         android:textColor="@color/main"
+        android:fontFamily="@font/red_hat"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +63,7 @@
             android:background="@drawable/background_color"
             android:gravity="center"
             android:text="@string/yes"
+            android:fontFamily="@font/red_hat"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -74,6 +76,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:fontFamily="@font/red_hat"
             android:background="@drawable/background_color"
             android:gravity="center"
             android:text="@string/no"

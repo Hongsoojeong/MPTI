@@ -8,7 +8,6 @@
     tools:context=".message.MessageActivity">
 
 
-
   <androidx.recyclerview.widget.RecyclerView
 
       android:id="@+id/messageActivity_recyclerview"
@@ -32,20 +31,23 @@
       android:layout_width="match_parent"
       android:layout_weight="10"
       android:elevation="10dp"
-      android:background="@color/main"
-      android:layout_height="30dp">
+      android:background="#2E3073"
+      android:layout_height="50dp">
 
     <EditText
         android:gravity="top|left"
+        android:hint="바른 말 고운 말 채팅 부탁드려요 :)"
+        android:paddingLeft="7dp"
+        android:paddingTop="5dp"
         android:lineSpacingExtra="2sp"
         android:textSize="15dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="6dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="5dp"
         android:id="@+id/messageActivity_editText"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/messageActivity_button"
@@ -55,11 +57,12 @@
     <Button
         android:id="@+id/messageActivity_button"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="9dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="3dp"
-        android:layout_weight="13"
+        android:layout_weight="10"
         android:background="@drawable/ic_baseline_send_24"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/maruburi_bold"

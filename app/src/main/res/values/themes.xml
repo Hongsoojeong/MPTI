@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <!-- <item name="android:windowFullscreen">true</item>  Status bar를 없앴음 -->
         <item name="android:windowFullscreen">true</item>
+        <item name="android:fontFamily">@font/red_hat</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

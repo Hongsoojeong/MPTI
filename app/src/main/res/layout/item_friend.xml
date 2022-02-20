@@ -14,7 +14,8 @@
     <TextView
         android:id="@+id/frienditem_textview"
         android:text="아이디"
-        android:textColor="@color/main"
+        android:textColor="#2E3073"
+        android:textSize="18dp"
         android:textStyle="bold"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="30dp"
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
+            android:textStyle="bold"
             android:id="@+id/frienditem_textview_comment"
             android:text="상태메세지"
             android:layout_width="wrap_content"

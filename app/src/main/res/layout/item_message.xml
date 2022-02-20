@@ -16,9 +16,11 @@
 
     <TextView
         android:id="@+id/messageItem_textView_name"
+        android:textSize="12dp"
         android:text="이름"
+        android:fontFamily="@font/red_hat"
         android:textStyle="bold"
-        android:textColor="@color/main"
+        android:textColor="#2E3073"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
         <ImageView
@@ -36,10 +38,13 @@
 
     <TextView
         android:text="메세지"
+        android:fontFamily="@font/red_hat"
+        android:padding="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:id="@+id/messageItem_textView_message"
-        android:textColor="@color/black"
+        android:textColor="#2C2D2E"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <LinearLayout
@@ -51,7 +56,6 @@
             android:textSize="10dp"
             android:visibility="invisible"
             android:textStyle="bold"
-
             android:layout_margin="2dp"
             android:textColor="#FFC800"
             android:layout_width="wrap_content"
@@ -62,7 +66,7 @@
         android:text="2011.11.11 11:11"
         android:textSize="9dp"
         android:textStyle="bold"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="#838383"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/messageItem_textview_timestap"/>

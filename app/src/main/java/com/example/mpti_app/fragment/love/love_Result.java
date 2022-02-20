@@ -87,7 +87,7 @@ public class love_Result extends Fragment {
             couple.setText("ISFJ & ISTJ");
         if (result_mpti.equals("ISTP"))
             couple.setText("ESFJ & ESTJ");
-        if (result_mpti.equals("ENTP"))
+        if (result_mpti.equals("ESTP"))
             couple.setText("ISFJ");
         if (result_mpti.equals("ISFJ"))
             couple.setText("ESFP & ESTP");
