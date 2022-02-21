@@ -5,7 +5,7 @@ import android.net.Uri;
 public class UserModel {
     public String userName;
     public String uid;
-    public String comment;
+    public String comment="";
 
     public String profileImageUrl;
 }

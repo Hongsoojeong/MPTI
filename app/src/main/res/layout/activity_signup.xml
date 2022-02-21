@@ -8,10 +8,11 @@
     android:gravity="center"
     android:orientation="vertical">
 <TextView
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
+    android:gravity="center"
     android:layout_height="wrap_content"
     android:textSize="35dp"
-    android:text="Welcome to MPTI :)!"
+    android:text="Welcome to MPTI ;)"
     android:textColor="@color/main"
     android:textStyle="bold|italic" />
     <ImageView
@@ -26,7 +27,7 @@
         android:layout_height="60dp"
         android:layout_gravity="left"
         android:layout_marginLeft="55dp"
-        android:text="활동의 자유성을 위해\n닉네임은 MBTI로 대신합니다 :)"
+        android:text="활동의 자유성을 위해\n닉네임은 ✨MBTI✨로 대신합니다"
         android:textSize="20dp"
         android:textStyle="bold"/>
 
@@ -38,6 +39,7 @@
         app:hintTextColor="#81A5FF">
 
         <EditText
+            android:singleLine="true"
             android:inputType="textEmailAddress"
             android:textColor="#3F4045"
             android:textSize="15dp"
@@ -86,6 +88,7 @@
         >
 
         <EditText
+            android:singleLine="true"
             android:textSize="15dp"
             android:textColor="#3F4045"
             android:textStyle="bold"
@@ -99,7 +102,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"/>
 
+
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:layout_marginTop="30dp"
         android:layout_marginLeft="50dp"

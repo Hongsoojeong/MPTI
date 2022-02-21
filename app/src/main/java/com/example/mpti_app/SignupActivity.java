@@ -22,7 +22,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -54,10 +56,26 @@ public class SignupActivity extends AppCompatActivity {
     private EditText email;
     private EditText name;
     private EditText password;
+
     private Button signup;
 
     private ImageView profile;
     private Uri imageUri;
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View view = getCurrentFocus();
+        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            view.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + view.getTop() - scrcoords[1];
+            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
+                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +106,7 @@ public class SignupActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.signupActivity_password);
         signup = (Button) findViewById(R.id.signupActivity_button_signup);
 
+
         ProgressBar progress = (ProgressBar) findViewById(R.id.progress1);
         TextInputLayout textinputlayout = (TextInputLayout) findViewById(R.id.mbti);
 
@@ -109,6 +128,9 @@ public class SignupActivity extends AppCompatActivity {
         });
 
 
+
+
+
         final boolean[] name_fill = {false};
 
         name.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +140,8 @@ public class SignupActivity extends AppCompatActivity {
             }
 
         });
+
+
 
 
 
@@ -136,9 +160,11 @@ public class SignupActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (password.getText().length()>=6){
                 password_fill[0] =true;}
-
-                if (email_fill[0]==true || email_fill[0]==true || password_fill[0]==true){
+                if (email_fill[0]==true || name.getText().toString().length()>0 || password_fill[0]==true){
                     signup.setVisibility(View.VISIBLE);
+                }
+                else{
+                    signup.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -154,10 +180,15 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Pattern p = Pattern.compile("^[a-zA-X0-9]@[a-zA-Z0-9].[a-zA-Z0-9]");
+                Pattern p = Pattern.compile("^[a-zA-Z0-9]+@[a-zA-Z0-9]+$");
                 Matcher m = p.matcher((email).getText().toString());
 
-                if ( !m.matches()){
+                if(imageUri==null) {
+                    Toast.makeText(SignupActivity.this, "이미지를 선택해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (isEmail(email.getText().toString())==false){
                     Toast.makeText(SignupActivity.this, "이메일 형식으로 입력해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -172,10 +203,7 @@ public class SignupActivity extends AppCompatActivity {
                 }
 
 
-                if(null != imageUri) {
-                    Toast.makeText(SignupActivity.this, "이미지를 선택해주세요", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+
 
                 progress.setVisibility(View.VISIBLE); //프로그래스 바 보이도록
                 Log.d("onClick : ", String.valueOf(email.getText()));
@@ -190,6 +218,11 @@ public class SignupActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 final String uid = task.getResult().getUser().getUid();
                                 Log.d("imageUri :", String.valueOf(imageUri));
+
+                                Map<String,Object> stringObjectMap = new HashMap<>();
+                                stringObjectMap.put("comment","hello :D");
+                                FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
+
 
                                 FirebaseStorage.getInstance().getReference().child("userImages").child(uid).putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                     @Override
@@ -271,6 +304,15 @@ public class SignupActivity extends AppCompatActivity {
                  .show();
 
     }
+
+    public static boolean isEmail(String email){
+        String regex = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if(m.matches())
+            return true;
+        return false; }
+
 
 
         }

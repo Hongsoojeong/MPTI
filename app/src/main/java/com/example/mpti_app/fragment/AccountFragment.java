@@ -85,7 +85,6 @@ public class AccountFragment extends Fragment {
        //  Glide를 사용하여 이미지 로드
 
 
-
         FirebaseStorage storage = FirebaseStorage.getInstance();// FirebaseStorage 인스턴스 생성
         String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -107,26 +106,15 @@ public class AccountFragment extends Fragment {
         });
 
 
+
         FirebaseDatabase.getInstance().getReference().child("users").child(myUid).addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userModel = dataSnapshot.getValue(UserModel.class);
-                mpti.setText(userModel.userName);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
-        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userModel = dataSnapshot.getValue(UserModel.class);
-                if (userModel.comment.equals("")){
+                Log.d("userModel.comment : ", String.valueOf(userModel.comment));
+                if (userModel.comment.equals("") ){
                     int grey = ContextCompat.getColor(view.getContext(), R.color.grey);
                     stateMessage.setTextColor(grey);
                     stateMessage.setText("상태 메세지를 설정해보세요! :)");
@@ -143,6 +131,20 @@ public class AccountFragment extends Fragment {
         });
 
 
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("comment").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+
+
+
 
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -151,9 +153,6 @@ public class AccountFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 startActivityForResult(intent, PICK_FROM_ALBUM);
-
-
-
 
 
             }
@@ -200,7 +199,6 @@ public class AccountFragment extends Fragment {
         if (requestCode == PICK_FROM_ALBUM && resultCode == Activity.RESULT_OK) {
             profile.setImageURI(data.getData()); // 가운데 뷰를 바꿈
             imageUri = data.getData();// 이미지 경로 원본
-
             String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             databaseReference= FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("profileImageUrl");
          //   FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("profileImageUrl").setValue(imageUri);
@@ -229,6 +227,7 @@ public class AccountFragment extends Fragment {
                 FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
                 Toast.makeText(view.getContext(), "상태메세지가 변경되었습니다.\n 새로고침하여 확인해보세요! :)", Toast.LENGTH_SHORT).show();
                 stateMessage.setText(userModel.comment);
+
             }
         }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
