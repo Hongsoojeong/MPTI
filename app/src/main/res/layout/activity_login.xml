@@ -96,4 +96,17 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"/>
 
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="#888888"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="비밀번호 재설정"
+        android:background="@color/white"
+        android:id="@+id/loginActivity_button_change_passwd"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
 </LinearLayout>

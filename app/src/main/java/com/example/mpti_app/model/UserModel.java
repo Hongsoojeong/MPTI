@@ -6,6 +6,8 @@ public class UserModel {
     public String userName;
     public String uid;
     public String comment="";
-
-    public String profileImageUrl;
+    public String profileImageUrl="";
+    public String friendship ="";
+    public String love ="";
+    public String work ="";
 }

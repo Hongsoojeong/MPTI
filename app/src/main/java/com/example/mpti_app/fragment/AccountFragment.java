@@ -47,23 +47,33 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.security.AccessController;
 import java.util.HashMap;
 import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AccountFragment extends Fragment {
     @Nullable
     private static final  int PICK_FROM_ALBUM = 10;
+    private Button editMbti;
+    private Button editProfile;
     private FirebaseAuth firebaseAuth;
-    private ImageView profile;
+    private CircleImageView profile;
     private Uri imageUri;
+    private TextView friendship;
+    private TextView love;
+    private TextView work;
+    private int change=0;
     UserModel userModel;
     private TextView mpti;
     private  TextView stateMessage;
     private ValueEventListener valueEventListener;
     private DatabaseReference databaseReference;
-
 
     @Override
 
@@ -73,11 +83,15 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
         Button logout = (Button) view.findViewById(R.id.accountFragment_butto_logout);
-
-        profile = (ImageView) view.findViewById(R.id.AccountFragment_profile_image);
+        editMbti = (Button) view.findViewById(R.id.accountFragment_button_mpti);
+        profile = (CircleImageView) view.findViewById(R.id.AccountFragment_profile_image);
         stateMessage = (TextView) view.findViewById(R.id.state_message);
         mpti = (TextView) view.findViewById(R.id.Fragment_account_profile_mpti);
 
+        friendship = (TextView) view.findViewById(R.id.friendship_result);
+        love = (TextView) view.findViewById(R.id.love_result);
+        work = (TextView) view.findViewById(R.id.workship_result);
+        editProfile = (Button) view.findViewById(R.id.accountFragment_butto_changeImage);
        //  StorageReference storageRef = storage.getReference("image.jpg");
         // 스토리지 공간을 참조해서 이미지를 가져옴
 
@@ -88,22 +102,25 @@ public class AccountFragment extends Fragment {
         FirebaseStorage storage = FirebaseStorage.getInstance();// FirebaseStorage 인스턴스 생성
         String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://mpti-app.appspot.com/userImages/" + myUid);
-        storageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
-                    // Glide 이용하여 이미지뷰에 로딩
-                    Glide.with(view.getContext())
-                            .load(task.getResult())
-                            .override(1024, 980)
-                            .apply(new RequestOptions().circleCrop())
-                            .into(profile);
-                } else {
-                    // URL을 가져오지 못하면 토스트 메세지
-                }
-            }
-        });
+
+          StorageReference storageRef = storage.getReferenceFromUrl("gs://mpti-app.appspot.com/userImages/" + myUid);
+          storageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+              @Override
+              public void onComplete(@NonNull Task<Uri> task) {
+                  if (task.isSuccessful()) {
+                      // Glide 이용하여 이미지뷰에 로딩
+                      Log.d("onCOmplete databaseReference(userModel.profileImageUrl) :",userModel.profileImageUrl);
+                      Glide.with(view.getContext())
+                              .load(userModel.profileImageUrl)
+                              .override(1024, 980)
+                              .apply(new RequestOptions().circleCrop())
+                              .into(profile);
+                  } else {
+                      // URL을 가져오지 못하면 토스트 메세지
+                  }
+              }
+          });
+
 
 
 
@@ -147,18 +164,47 @@ public class AccountFragment extends Fragment {
 
 
 
-        profile.setOnClickListener(new View.OnClickListener() {
+        editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 startActivityForResult(intent, PICK_FROM_ALBUM);
 
+            }
+
+        });
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userModel = snapshot.getValue(UserModel.class);
+                mpti.setText(userModel.userName);
+                if (userModel.friendship.equals("")){}
+                else
+                {friendship.setText("Friend ship MPTI Test : "+userModel.friendship);}
+
+                if (userModel.work.equals("")){}
+                else
+                {work.setText("Friend ship MPTI Test : "+userModel.work);}
+
+                if (userModel.love.equals("")){}
+                else
+                {love.setText("Friend ship MPTI Test : "+userModel.love);}
+
+    }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
 
-
+        editMbti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogSingleChoice(view.getContext());
+            }
+        });
 
 
 
@@ -204,9 +250,8 @@ public class AccountFragment extends Fragment {
          //   FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("profileImageUrl").setValue(imageUri);
             Log.d("databaseReference :",String.valueOf(imageUri));
             Log.d("databaseReference :",String.valueOf(databaseReference));
-
-
-
+            userModel.profileImageUrl = String.valueOf(imageUri);
+            Log.d("onActivity databaseReference(userModel.profileImageUrl) :",userModel.profileImageUrl);
         }
     }
 
@@ -217,6 +262,7 @@ public class AccountFragment extends Fragment {
         View view = layoutInflater.inflate(R.layout.dialog_comment,null);
         EditText editText = view.findViewById(R.id.commentDialog_edittext);
 
+        editText.setHint("상태메세지를 설정해주세요:)");
 
         builder.setView(view).setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
@@ -239,4 +285,26 @@ public class AccountFragment extends Fragment {
 
     }
 
+    void DialogSingleChoice(Context context){
+
+        final CharSequence[] oItems = {"ISFP","ISTP","ISFJ","ISTJ","INFP","INTP","INFJ","INTJ","ENFP","ENTP","ENFJ","ENTJ","ESFP","ESTP","ESFJ","ESTJ"};
+        AlertDialog.Builder oDialog = new AlertDialog.Builder(context,android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
+
+        oDialog.setTitle("MBTI를 선택해주세요 :)")
+                .setItems(oItems, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        Toast.makeText(context, "MPTI가 변경되었습니다.\n 새로고침하여 확인해보세요! :)", Toast.LENGTH_SHORT).show();
+                        Map<String,Object> stringObjectMap = new HashMap<>();
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        stringObjectMap.put("userName",oItems[which]);
+                        FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
+                        mpti.setText(oItems[which]);
+                    }
+                })
+                .setCancelable(false)
+                .show();
+    }
 }

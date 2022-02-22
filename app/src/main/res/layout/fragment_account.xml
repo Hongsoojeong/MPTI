@@ -13,13 +13,13 @@
         android:background="@drawable/group"
         android:orientation="vertical">
         <ImageView
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/your_profile"
             />
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:id="@+id/AccountFragment_profile_image"
@@ -35,7 +35,6 @@
         android:layout_height="match_parent"
         android:text="MPTI"
         android:textColor="#2E3073"
-        android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textSize="40dp"
         android:layout_gravity="center"
@@ -56,11 +55,45 @@
         android:layout_marginBottom="10dp"
         tools:ignore="MissingConstraints"
       />
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:textColor="#515151"
+
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/friendship_result"
+        android:text="Friend ship MPTI : 해당 테스트 후 저장해주시길 바랍니다 :) "/>
+    <TextView
+        android:textColor="#515151"
+
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/love_result"
+        android:text="Love Test MPTI : 해당 테스트 후 저장해주시길 바랍니다 :) "/>
+    <TextView
+        android:textColor="#515151"
+
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/workship_result"
+        android:text="Work Test MPTI : 해당 테스트 후 저장해주시길 바랍니다 :) "
+        android:layout_marginBottom="15dp"/>
+    </LinearLayout>
 <LinearLayout
     android:layout_gravity="center"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <Button
         android:gravity="center"
@@ -79,6 +112,16 @@
         tools:layout_editor_absoluteY="645dp" />
 
     <Button
+        android:id="@+id/accountFragment_button_mpti"
+        android:layout_width="wrap_content"
+        android:textColor="#515151"
+        android:textStyle="bold"
+
+        android:layout_height="40dp"
+        android:text="MPTI 변경"
+        android:layout_gravity="center"
+        />
+    <Button
         android:layout_gravity="center"
         android:textColor="#515151"
         android:textStyle="bold"
@@ -87,7 +130,21 @@
         android:layout_height="40dp"
         android:layout_toRightOf="@+id/accountFragment_butto_comment"
         android:text="로그아웃"/>
+
+    <Button
+        android:layout_gravity="center"
+        android:textColor="#515151"
+        android:textStyle="bold"
+        android:id="@+id/accountFragment_butto_changeImage"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/accountFragment_butto_comment"
+        android:text="사진 변경"/>
+
 </LinearLayout>
+
+
+
 
 
 </LinearLayout>

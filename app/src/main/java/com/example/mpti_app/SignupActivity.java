@@ -204,7 +204,6 @@ public class SignupActivity extends AppCompatActivity {
 
 
 
-
                 progress.setVisibility(View.VISIBLE); //프로그래스 바 보이도록
                 Log.d("onClick : ", String.valueOf(email.getText()));
                 Log.d("onClick : ",String.valueOf(name.getText()));
@@ -216,6 +215,24 @@ public class SignupActivity extends AppCompatActivity {
 
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                if (!task.isSuccessful()) {
+                                    try {
+                                        task.getResult();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        Log.d("Fail_register_email", e.getMessage());
+                                        Toast.makeText(SignupActivity.this, "이미있는 이메일 형식입니다 다시 입력해주세요", Toast.LENGTH_LONG).show();
+                                        finish();//인텐트 종료
+                                        overridePendingTransition(0, 0);//인텐트 효과 없애기
+                                        Intent intent = getIntent(); //인텐트
+                                        startActivity(intent); //액티비티 열기
+                                        overridePendingTransition(0, 0);//인텐트 효과 없애기
+                                    }
+                                    progress.setVisibility(View.INVISIBLE);
+                                    return;
+                                }
+                                progress.setVisibility(View.VISIBLE);
                                 final String uid = task.getResult().getUser().getUid();
                                 Log.d("imageUri :", String.valueOf(imageUri));
 

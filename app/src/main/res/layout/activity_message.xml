@@ -8,7 +8,6 @@
     tools:context=".message.MessageActivity"
     android:id="@+id/message_activity">
 
-
   <androidx.recyclerview.widget.RecyclerView
 
       android:id="@+id/messageActivity_recyclerview"
@@ -54,7 +53,8 @@
         android:layout_weight="1"
         android:background="@drawable/edit_text"/>
 
-    <Button
+    <TextView
+        android:layout_gravity="center"
         android:id="@+id/messageActivity_button"
         android:layout_width="match_parent"
         android:layout_height="30dp"

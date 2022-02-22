@@ -14,6 +14,11 @@ import androidx.annotation.Nullable;
 import com.example.mpti_app.R;
 import com.example.mpti_app.fragment.MainFragment;
 import com.example.mpti_app.test.TestModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class love_Result extends Fragment {
 
@@ -22,6 +27,7 @@ public class love_Result extends Fragment {
         TextView textView = (TextView) view.findViewById(R.id.friendship_result);
         TextView couple = (TextView) view.findViewById(R.id.mbti_couple);
         Button button = (Button)view.findViewById(R.id.result_ok);
+        Button save =(Button) view.findViewById(R.id.result_save);
 
         String result_mpti;
 
@@ -106,7 +112,16 @@ public class love_Result extends Fragment {
             }
         });
 
-
+        String finalResult_mpti = result_mpti;
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Map<String,Object> stringObjectMap = new HashMap<>();
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                stringObjectMap.put("love",finalResult_mpti);
+                FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
+            }
+        });
 
         return view;
     }

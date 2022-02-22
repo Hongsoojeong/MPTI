@@ -41,6 +41,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,7 +55,7 @@ import java.util.TimeZone;
 public class MessageActivity extends AppCompatActivity {
 
     private String destinationUid;
-    private Button button;
+    private TextView button;
     private EditText editText;
 
     private String uid;
@@ -90,14 +92,11 @@ public class MessageActivity extends AppCompatActivity {
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid(); // 채팅을 요구하는 아이디. 즉, 단말기가 로그인된 UID
         destinationUid = getIntent().getStringExtra("destinationUid");// 채팅을 당하는 아이디
 
-        button = (Button) findViewById(R.id.messageActivity_button);;
+        button = (TextView) findViewById(R.id.messageActivity_button);;
         editText = (EditText) findViewById(R.id.messageActivity_editText);
 
 
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
-
-
-
 
 
 
@@ -110,13 +109,17 @@ public class MessageActivity extends AppCompatActivity {
 
 
                 if (chatRoomUid==null){
+                    Toast.makeText(view.getContext(), "처음 채팅 시작할 시, 전송버튼을 한번 더 눌러주세요 :)", android.widget.Toast.LENGTH_SHORT).show();
                     button.setEnabled(false);
                     FirebaseDatabase.getInstance().getReference().child("chatrooms").push().setValue(chatModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+
                             checkChatRoom();
+
                         }
                     });
+
                  //   checkChatRoom();
                     Log.d("button.setOnClickListener","null");
                 }
@@ -127,6 +130,8 @@ public class MessageActivity extends AppCompatActivity {
                         Toast.makeText(view.getContext(), "아무것도 입력되지 않았습니다", android.widget.Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(editText, 0);
                     ChatModel.Comment comment = new ChatModel.Comment();
                     comment.uid = uid;
                     comment.message = editText.getText().toString();
@@ -356,7 +361,7 @@ public class MessageActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        databaseReference.removeEventListener(valueEventListener);
+       // databaseReference.removeEventListener(valueEventListener); //오류가 나서 일단은 없앴음
         finish();
     }
 
@@ -365,5 +370,11 @@ public class MessageActivity extends AppCompatActivity {
         InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
+
+
+
+
+
+
 
 }

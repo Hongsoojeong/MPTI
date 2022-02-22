@@ -43,7 +43,9 @@ public class Friendship_q01 extends Fragment {
             public void onClick(View view) {
                 TestModel.J++;
                 Log.d("J",String.valueOf(TestModel.J));
+
                 getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new Friendship_q02()).commit();
+
             }
         });
         option2.setOnClickListener(new View.OnClickListener() {

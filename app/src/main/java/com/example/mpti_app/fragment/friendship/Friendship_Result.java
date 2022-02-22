@@ -1,6 +1,7 @@
 package com.example.mpti_app.fragment.friendship;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.mpti_app.R;
 import com.example.mpti_app.fragment.AccountFragment;
@@ -17,6 +19,11 @@ import com.example.mpti_app.fragment.ChatFragment;
 import com.example.mpti_app.fragment.MainFragment;
 import com.example.mpti_app.fragment.PeopleFragment;
 import com.example.mpti_app.test.TestModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Friendship_Result extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -24,6 +31,7 @@ public class Friendship_Result extends Fragment {
         TextView textView = (TextView) view.findViewById(R.id.friendship_result);
         TextView couple = (TextView) view.findViewById(R.id.mbti_couple);
         Button button = (Button)view.findViewById(R.id.result_ok);
+        Button save = (Button) view.findViewById(R.id.result_save);
 
         String result_mpti;
 
@@ -109,6 +117,16 @@ public class Friendship_Result extends Fragment {
         });
 
 
+        String finalResult_mpti = result_mpti;
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Map<String,Object> stringObjectMap = new HashMap<>();
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                stringObjectMap.put("friendship",finalResult_mpti);
+                FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
+            }
+        });
 
         return view;
     }

@@ -92,5 +92,15 @@
         android:layout_gravity="center"
         android:background="@drawable/ic_left_bubble"
         />
-
+    <Button
+        android:id="@+id/result_save"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="저장하기"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_left_bubble"
+        />
 </LinearLayout>
