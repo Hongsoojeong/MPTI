@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
-
+    ProgressBar progress;
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -68,12 +69,11 @@ public class LoginActivity extends AppCompatActivity {
         firebaseRemoteConfig=firebaseRemoteConfig.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();//     firebaseAuth.signOut();
 
-        changePw =(Button) findViewById(R.id.loginActivity_button_change_passwd);
         id = (EditText) findViewById(R.id.loginActivity_edittext_id);
         password = (EditText) findViewById(R.id.loginActivity_edittext_password);
 
 
-
+        progress = (ProgressBar) findViewById(R.id.login_progressBar);
 
 
 
@@ -118,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Log.d("onClick :","loginEvent");
                     loginEvent();
+
                 }
 
 
@@ -169,11 +170,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     void loginEvent(){
+        progress.setVisibility(View.VISIBLE);
         firebaseAuth.signInWithEmailAndPassword(id.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                progress.setVisibility(View.VISIBLE);
                 if(!task.isSuccessful()){ // 로그인 실패한 부분
+                    progress.setVisibility(View.INVISIBLE);
                     Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 else{

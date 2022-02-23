@@ -8,16 +8,16 @@
     tools:context=".fragment.friendship.Friendship_q05">
 
     <TextView
-        android:textStyle="bold"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_marginTop="35dp"
+        android:fontFamily="@font/red_hat"
         android:text="@string/friendship_q05"
         android:textColor="@color/main"
-        android:fontFamily="@font/red_hat"
         android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -41,6 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:orientation="vertical"
@@ -61,27 +62,27 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@drawable/background_color"
+            android:fontFamily="@font/red_hat"
             android:gravity="center"
             android:text="@string/yes"
-            android:fontFamily="@font/red_hat"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/q01_option5N"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:fontFamily="@font/red_hat"
             android:background="@drawable/background_color"
+            android:fontFamily="@font/red_hat"
             android:gravity="center"
             android:text="@string/no"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -98,4 +99,18 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:max="12"
+        android:progress="5"
+        android:progressTint="@color/main"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 </androidx.constraintlayout.widget.ConstraintLayout>
