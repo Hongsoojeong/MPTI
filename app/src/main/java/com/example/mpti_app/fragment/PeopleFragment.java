@@ -1,18 +1,29 @@
 package com.example.mpti_app.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.app.Fragment;
+
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +32,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.R;
 import com.example.mpti_app.message.MessageActivity;
 import com.example.mpti_app.model.UserModel;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,32 +42,52 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.zip.Inflater;
 
-public class PeopleFragment extends Fragment {
+
+public class PeopleFragment extends Fragment  {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
+
+
+
         View view = inflater.inflate(R.layout.fragment_people, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.peoplefragment_recyclerview);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
         recyclerView.setAdapter(new PeopleFragmentRecyclerViewAdapter());
 
+
+
         return view;
+
+
     }
 
 
-    class PeopleFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    class PeopleFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
 
         List<UserModel> userModels;
 
+
         public PeopleFragmentRecyclerViewAdapter() {
+
+
+
+
+
             userModels = new ArrayList<>();
             String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
             FirebaseDatabase.getInstance().getReference().child("users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
+
+
                     userModels.clear();
 
                     for (DataSnapshot snapshot: datasnapshot.getChildren()){
@@ -67,6 +99,8 @@ public class PeopleFragment extends Fragment {
                     }
 
                     notifyDataSetChanged();
+
+
                 }
 
                 @Override
@@ -74,6 +108,8 @@ public class PeopleFragment extends Fragment {
 
                 }
             });
+
+
         }
 
         @NonNull
@@ -82,6 +118,10 @@ public class PeopleFragment extends Fragment {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_friend,parent,false);
             return new CustomViewHolder(view);
         }
+
+
+
+
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder,  final int position) {
@@ -92,6 +132,7 @@ public class PeopleFragment extends Fragment {
                     .apply(new RequestOptions().circleCrop())
                     .into(((CustomViewHolder)holder).imageView);
             ((CustomViewHolder)holder).textView.setText(userModels.get(position).userName);
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -100,8 +141,17 @@ public class PeopleFragment extends Fragment {
                     startActivity(intent);
                 }
             });
+
             if (userModels.get(position).comment!=null)
             ((CustomViewHolder)holder).textView_comment.setText(userModels.get(position).comment);
+
+
+            if (holder.itemView.getContext() != null) {
+                PeopleFragmentRecyclerViewAdapter adapter = new PeopleFragmentRecyclerViewAdapter();
+                //       if (((CustomViewHolder) holder).search.equals(null)) {
+                Log.d("customViewHolder","null이 걸려?");
+
+            }
 
 
         }
@@ -116,12 +166,13 @@ public class PeopleFragment extends Fragment {
            public TextView textView;
            public ImageView imageView;
            public TextView textView_comment;
+
             public CustomViewHolder(@NonNull View view) {
                 super(view);
                 imageView = view.findViewById(R.id.frienditem_imageview);
                 textView = (TextView) view.findViewById(R.id.frienditem_textview);
                 textView_comment = (TextView) view.findViewById(R.id.frienditem_textview_comment);
-                Log.d("customViewHolder","textview");
+
             }
         }
 

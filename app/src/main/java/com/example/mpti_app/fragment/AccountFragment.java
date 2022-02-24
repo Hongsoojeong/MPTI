@@ -91,7 +91,7 @@ public class AccountFragment extends Fragment {
         friendship = (TextView) view.findViewById(R.id.friendship_result);
         love = (TextView) view.findViewById(R.id.love_result);
         work = (TextView) view.findViewById(R.id.workship_result);
-        editProfile = (Button) view.findViewById(R.id.accountFragment_butto_changeImage);
+   //     editProfile = (Button) view.findViewById(R.id.accountFragment_butto_changeImage);
        //  StorageReference storageRef = storage.getReference("image.jpg");
         // 스토리지 공간을 참조해서 이미지를 가져옴
 
@@ -164,16 +164,16 @@ public class AccountFragment extends Fragment {
 
 
 
-        editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
-                startActivityForResult(intent, PICK_FROM_ALBUM);
+//        editProfile.setOnClickListener(new View.OnClickListener() {
+  //          @Override
+  //          public void onClick(View view) {
+  //              Intent intent = new Intent(Intent.ACTION_PICK);
+  //              intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+   //             startActivityForResult(intent, PICK_FROM_ALBUM);
+//
+    //        }
 
-            }
-
-        });
+    //    });
         FirebaseDatabase.getInstance().getReference().child("users").child(myUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -181,15 +181,15 @@ public class AccountFragment extends Fragment {
                 mpti.setText(userModel.userName);
                 if (userModel.friendship.equals("")){}
                 else
-                {friendship.setText("Friend ship MPTI Test : "+userModel.friendship);}
+                {friendship.setText(userModel.friendship);}
 
                 if (userModel.work.equals("")){}
                 else
-                {work.setText("Friend ship MPTI Test : "+userModel.work);}
+                {work.setText(userModel.work);}
 
                 if (userModel.love.equals("")){}
                 else
-                {love.setText("Friend ship MPTI Test : "+userModel.love);}
+                {love.setText(userModel.love);}
 
     }
 
@@ -308,3 +308,5 @@ public class AccountFragment extends Fragment {
                 .show();
     }
 }
+
+

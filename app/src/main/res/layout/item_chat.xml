@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
-            android:text="마지막 메세지"
+            android:text="먼저 말을 걸어 즐거운 인연을 만들어보아요 :)"
             android:textStyle="bold"
             android:id="@+id/chatitem_chatitem_textview_lastMessage"
             android:layout_below="@id/chatitem_textview_title"

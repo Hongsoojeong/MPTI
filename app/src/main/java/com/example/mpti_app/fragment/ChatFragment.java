@@ -122,6 +122,23 @@ public class ChatFragment extends Fragment {
             //메세지를 내림차순으로 정렬 후 마지막 메세지의 키값을 가져옴
             Map<String,ChatModel.Comment> commentMap = new TreeMap<>(Collections.reverseOrder());
             commentMap.putAll(chatModels.get(position).comments);
+
+            if (commentMap.size()==0){
+                customViewHolder.textView_timestamp.setText("");
+                customViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(view.getContext(), MessageActivity.class);
+                        intent.putExtra("destinationUid",destinationUsers.get(position));
+                        startActivity(intent);
+                    }
+                });
+
+
+                return; //아무런 메세지를 생성하지않았을 때 오류를 잡음
+            }
+
             String lastMessageKey = (String) commentMap.keySet().toArray()[0];
             customViewHolder.textView_last_message.setText(chatModels.get(position).comments.get(lastMessageKey).message);
 

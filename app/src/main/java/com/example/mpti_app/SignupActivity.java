@@ -232,6 +232,8 @@ public class SignupActivity extends AppCompatActivity {
                                     progress.setVisibility(View.INVISIBLE);
                                     return;
                                 }
+
+
                                 progress.setVisibility(View.VISIBLE);
                                 final String uid = task.getResult().getUser().getUid();
                                 Log.d("imageUri :", String.valueOf(imageUri));

@@ -4,32 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/group"
+        android:background="@drawable/account"
         android:orientation="vertical">
         <ImageView
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="27dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/your_profile"
             />
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="33dp"
             android:layout_gravity="center"
             android:id="@+id/AccountFragment_profile_image"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="314dp"
+            android:layout_height="314dp"
             android:src="@drawable/uploadimage"
             />
     </LinearLayout>
 
     <TextView
+
         android:id="@+id/Fragment_account_profile_mpti"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -40,9 +43,10 @@
         android:layout_gravity="center"
         android:layout_above="@+id/AccountFragment_profile_image"
         />
+
     <TextView
         android:textColor="#232325"
-        android:padding="20dp"
+        android:padding="5dp"
         android:id="@+id/state_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,79 +54,150 @@
         android:textStyle="bold"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        android:layout_marginBottom="10dp"
+        android:textSize="15dp"
+        android:layout_marginBottom="5dp"
         tools:ignore="MissingConstraints"
       />
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <TextView
-        android:textColor="#515151"
+        android:orientation="horizontal"
+        android:layout_marginBottom="3dp"
+        android:layout_gravity="center">
+        <Button
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/grey"
+            android:id="@+id/accountFragment_butto_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/AccountFragment_profile_image"
+            android:text="상태 메세지 변경"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/accountFragment_butto_logout"
+            tools:ignore="MissingConstraints"
+            android:textSize="13dp"
 
+            tools:layout_editor_absoluteY="645dp" />
+
+        <Button
+            android:textSize="13dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/accountFragment_button_mpti"
+            android:layout_width="wrap_content"
+            android:textColor="@color/grey"
+            android:textStyle="bold"
+            android:layout_height="40dp"
+            android:text="MPTI 변경"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+    <View
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#B3B3B6"/>
+
+
+    <LinearLayout
+android:background="@drawable/send_background"
+        android:layout_marginTop="3dp"
+        android:layout_gravity="center|left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="3dp">
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:textColor="#2E3073"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="● FriendShip MPTI : "/>
+
+    <TextView
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/friendship_result"
-        android:text="Friend ship MPTI : 해당 테스트 후 저장해주시길 바랍니다 :) "/>
+        android:textSize="13dp"
+        android:textColor="@color/grey"
+        android:text="테스트 미완료"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="left">
+            <TextView
+                android:textColor="#2E3073"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="● Love MPTI : "/>
     <TextView
-        android:textColor="#515151"
-
+        android:textColor="@color/grey"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/love_result"
-        android:text="Love Test MPTI : 해당 테스트 후 저장해주시길 바랍니다 :) "/>
+        android:textSize="13dp"
+        android:text="테스트 미완료"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="left">
+            <TextView
+                android:textColor="#2E3073"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="● Work MPTI : "/>
     <TextView
-        android:textColor="#515151"
-
+        android:textColor="@color/grey"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/workship_result"
-        android:text="Work Test MPTI : 해당 테스트 후 저장해주시길 바랍니다 :) "
-        android:layout_marginBottom="15dp"/>
+        android:textSize="13dp"
+        android:text="테스트 미완료" />
+
+        </LinearLayout>
     </LinearLayout>
 <LinearLayout
+    android:layout_marginTop="4dp"
     android:layout_gravity="center"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <Button
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textColor="#515151"
-        android:id="@+id/accountFragment_butto_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/AccountFragment_profile_image"
-        android:text="상태 메세지 변경"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/accountFragment_butto_logout"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="645dp" />
+
 
     <Button
-        android:id="@+id/accountFragment_button_mpti"
-        android:layout_width="wrap_content"
-        android:textColor="#515151"
-        android:textStyle="bold"
-
-        android:layout_height="40dp"
-        android:text="MPTI 변경"
-        android:layout_gravity="center"
-        />
-    <Button
+        style="?android:attr/borderlessButtonStyle"
         android:layout_gravity="center"
         android:textColor="#515151"
         android:textStyle="bold"
@@ -132,20 +207,11 @@
         android:layout_toRightOf="@+id/accountFragment_butto_comment"
         android:text="로그아웃"/>
 
-    <Button
-        android:layout_gravity="center"
-        android:textColor="#515151"
-        android:textStyle="bold"
-        android:id="@+id/accountFragment_butto_changeImage"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_toRightOf="@+id/accountFragment_butto_comment"
-        android:text="사진 변경"/>
 
-</LinearLayout>
 
 
 
 
 
+</LinearLayout>
 </LinearLayout>
