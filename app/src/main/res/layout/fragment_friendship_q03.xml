@@ -12,11 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/red_hat"
         android:text="@string/friendship_q03"
         android:textColor="@color/main"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,21 +26,23 @@
         app:layout_constraintVertical_bias="0.087" />
 
     <TextView
+        android:layout_marginRight="10dp"
         android:id="@+id/textView"
-        android:padding="2dp"
-        android:background="@drawable/top_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="90dp"
         android:layout_marginTop="4dp"
-        android:textStyle="bold"
+        android:background="@drawable/friendship_logo"
+        android:gravity="right"
+        android:padding="2dp"
         android:textColor="@color/white"
-        android:textSize="15dp"
-        android:text="Friendship"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:layout_marginTop="200dp"
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="280dp"
@@ -61,7 +63,7 @@
             android:layout_marginTop="60dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@drawable/background_color"
+            android:background="@drawable/result_logo"
             android:fontFamily="@font/red_hat"
             android:gravity="center"
             android:text="@string/yes"
@@ -76,7 +78,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@drawable/background_color"
+            android:background="@drawable/result_logo"
             android:fontFamily="@font/red_hat"
             android:gravity="center"
             android:text="@string/no"
@@ -101,10 +103,12 @@
         android:layout_marginRight="20dp"
         android:max="12"
         android:progress="3"
-        android:progressTint="@color/main"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        android:progressDrawable="@drawable/progressbar_custom"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,48 +43,47 @@
         app:ci_width="7dp"/>
 
 <LinearLayout
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <Button
+        android:textSize="13dp"
         android:fontFamily="@font/red_hat"
         style="?android:attr/borderlessButtonStyle"
         android:textStyle="bold"
         android:id="@+id/friendship_test_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:textColor="@color/white"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/ic_left_bubble"
-        android:text="Friendship MPTI Test 시작하기"/>
+        android:background="@drawable/result_logo"
+        android:text="Friendship"/>
     <Button
+        android:layout_marginTop="10dp"
+        android:textSize="13dp"
         android:fontFamily="@font/red_hat"
         style="?android:attr/borderlessButtonStyle"
         android:textColor="@color/white"
-        android:background="@drawable/ic_left_bubble"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:background="@drawable/result_logo"
         android:textStyle="bold"
         android:id="@+id/love_test_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Love MPTI Test 시작하기" />
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Love" />
     <Button
+        android:layout_marginTop="10dp"
+        android:textSize="13dp"
         android:fontFamily="@font/red_hat"
         style="?android:attr/borderlessButtonStyle"
         android:textColor="@color/white"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/ic_left_bubble"
-        android:layout_marginTop="10dp"
+        android:background="@drawable/result_logo"
         android:textStyle="bold"
         android:id="@+id/work_test_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Work MPTI Test 시작하기" />
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Work" />
 </LinearLayout>
 
 

@@ -6,13 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
 >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/account"
+        android:background="@drawable/account_linear"
         android:orientation="vertical">
         <ImageView
             android:layout_marginTop="27dp"
@@ -31,21 +43,47 @@
             />
     </LinearLayout>
 
-    <TextView
-
-        android:id="@+id/Fragment_account_profile_mpti"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="MPTI"
-        android:textColor="#2E3073"
-        android:textStyle="bold"
-        android:textSize="40dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_above="@+id/AccountFragment_profile_image"
-        />
+        android:gravity="center"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/Fragment_account_profile_mpti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MPTI"
+            android:textColor="#2E3073"
+            android:textStyle="bold"
+            android:textSize="40dp"
+            android:layout_gravity="center"
+            android:layout_above="@+id/AccountFragment_profile_image"
+            />
+        <Button
+            android:layout_marginLeft="6dp"
+            android:id="@+id/accountFragment_butto_comment"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/AccountFragment_profile_image"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_logo_blue"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal">
     <TextView
-        android:textColor="#232325"
+        android:layout_marginLeft="20dp"
+        android:textColor="#4F4F50"
         android:padding="5dp"
         android:id="@+id/state_message"
         android:layout_width="wrap_content"
@@ -54,164 +92,129 @@
         android:textStyle="bold"
         android:gravity="center"
         android:layout_gravity="center"
-        android:textSize="15dp"
-        android:layout_marginBottom="5dp"
+        android:textSize="20dp"
         tools:ignore="MissingConstraints"
-      />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="3dp"
-        android:layout_gravity="center">
-        <Button
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/grey"
-            android:id="@+id/accountFragment_butto_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/AccountFragment_profile_image"
-            android:text="상태 메세지 변경"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/accountFragment_butto_logout"
-            tools:ignore="MissingConstraints"
-            android:textSize="13dp"
-
-            tools:layout_editor_absoluteY="645dp" />
-
-        <Button
-            android:textSize="13dp"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/accountFragment_button_mpti"
-            android:layout_width="wrap_content"
-            android:textColor="@color/grey"
-            android:textStyle="bold"
-            android:layout_height="40dp"
-            android:text="MPTI 변경"
-            android:layout_gravity="center"
-            />
-    </LinearLayout>
-    <View
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        />
+    <Button
+        android:background="@drawable/edit_logo"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/accountFragment_button_mpti"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:textColor="@color/grey"
+        android:textStyle="bold"
         android:layout_gravity="center"
-        android:background="#B3B3B6"/>
+        />
+</LinearLayout>
+
+
+
+
 
 
     <LinearLayout
-android:background="@drawable/send_background"
-        android:layout_marginTop="3dp"
-        android:layout_gravity="center|left"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="3dp">
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <TextView
-            android:textColor="#2E3073"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="● FriendShip MPTI : "/>
+        android:orientation="vertical">
 
+
+
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
     <TextView
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
         android:id="@+id/friendship_result"
-        android:textSize="13dp"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:background="@drawable/in_firendship"
         android:textColor="@color/grey"
         android:text="테스트 미완료"/>
+
         </LinearLayout>
+
+
+
+
+
+
+
+
         <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="left">
-            <TextView
-                android:textColor="#2E3073"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="● Love MPTI : "/>
     <TextView
+        android:background="@drawable/in_love"
         android:textColor="@color/grey"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:id="@+id/love_result"
-        android:textSize="13dp"
-        android:text="테스트 미완료"/>
+        android:textStyle="bold"
+        android:textSize="15dp"
+        />
+
         </LinearLayout>
+
+
+
+
+
+
         <LinearLayout
-            android:layout_marginLeft="30dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="left">
-            <TextView
-                android:textColor="#2E3073"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="● Work MPTI : "/>
+            android:layout_gravity="center">
+
     <TextView
+        android:background="@drawable/in_work"
         android:textColor="@color/grey"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:id="@+id/workship_result"
-        android:textSize="13dp"
-        android:text="테스트 미완료" />
+        android:textStyle="bold"
+        android:textSize="15dp" />
 
         </LinearLayout>
+
+
+        <Button
+            android:background="@drawable/logout_logo"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="center"
+            android:textColor="#515151"
+            android:textStyle="bold"
+            android:id="@+id/accountFragment_butto_logout"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/accountFragment_butto_comment"
+            />
     </LinearLayout>
-<LinearLayout
-    android:layout_marginTop="4dp"
-    android:layout_gravity="center"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-
-
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_gravity="center"
-        android:textColor="#515151"
-        android:textStyle="bold"
-        android:id="@+id/accountFragment_butto_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_toRightOf="@+id/accountFragment_butto_comment"
-        android:text="로그아웃"/>
-
-
-
-
-
 
 
 </LinearLayout>
+</ScrollView>
+
 </LinearLayout>
+
+
+

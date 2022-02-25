@@ -7,31 +7,38 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".fragment.work.work_Result">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
-        android:layout_gravity="center"
+        android:layout_gravity="right"
         android:id="@+id/textView"
+        android:layout_marginRight="10dp"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/work_logo"
+        android:gravity="right"
         android:padding="2dp"
-        android:background="@drawable/top_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="15dp"
-        android:text="Work"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
         android:id="@+id/textView2"
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="@string/result_title"
+        android:text="당신의 업무 페르소나는 "
+        android:layout_marginBottom="20dp"
         android:textColor="@color/main"
         android:textStyle="bold"
         android:textSize="25dp"
@@ -41,36 +48,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.087" />
-
-
-
-    <TextView
-        android:id="@+id/friendship_result"
-        android:layout_width="386dp"
-        android:layout_height="159dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:text="INTJ"
+        android:background="@drawable/mbti_result_logo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/friendship_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="INTJ"
+            android:textStyle="bold"
+            android:textColor="@color/main"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.151" />
+        <TextView
+            android:layout_gravity="center"
+            android:textColor="@color/main"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입니다"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/work_explain"
+        android:textSize="15dp"
         android:textStyle="bold"
-        android:textColor="@color/main"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151" />
+        android:textColor="@color/grey"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="연애를 할 때는 자신의 감정에
+솔직한 편인 당신,\n첫 인상을 아주 중요하게 생각하는군요!"/>
 
     <TextView
-        android:layout_marginTop="60dp"
-        android:layout_width="386dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:text="당신과 환상의 궁합을 가진 페르소나는..."
+        android:textSize="25dp"
+        android:text="당신과 환상의 짝궁은.."
         android:textColor="@color/main" />
 
     <TextView
+        android:fontFamily="@font/red_hat"
         android:textStyle="bold"
         android:textColor="@color/main"
         android:layout_gravity="center"
@@ -82,6 +118,8 @@
         android:text="TextView" />
 
     <Button
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:id="@+id/result_ok"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -90,9 +128,11 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:background="@drawable/ic_left_bubble"
+        android:background="@drawable/result_logo"
         />
     <Button
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:id="@+id/result_save"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -101,6 +141,8 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:background="@drawable/ic_left_bubble"
+        android:background="@drawable/result_logo"
         />
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>
