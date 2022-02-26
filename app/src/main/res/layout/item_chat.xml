@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="70dp">
 <ImageView
+    android:padding="1dp"
+    android:background="@drawable/mbti_result_logo"
     android:layout_margin="10dp"
     android:layout_width="50dp"
     android:layout_height="50dp"
@@ -19,7 +21,7 @@
             android:text="방 이름"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:textColor="#2E3073"
+            android:textColor="@color/black"
             android:id="@+id/chatitem_textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

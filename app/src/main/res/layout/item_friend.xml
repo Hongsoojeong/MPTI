@@ -7,6 +7,8 @@
 
 
     <ImageView
+        android:padding="1dp"
+        android:background="@drawable/mbti_result_logo"
         android:layout_marginLeft="20dp"
         android:id="@+id/frienditem_imageview"
             android:layout_width="50dp"
@@ -14,7 +16,7 @@
     <TextView
         android:id="@+id/frienditem_textview"
         android:text="아이디"
-        android:textColor="#2E3073"
+        android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
         android:layout_gravity="center_vertical"

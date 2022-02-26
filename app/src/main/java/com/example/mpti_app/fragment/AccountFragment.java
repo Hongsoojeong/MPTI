@@ -2,10 +2,13 @@ package com.example.mpti_app.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +30,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.disklrucache.DiskLruCache;
@@ -34,7 +39,9 @@ import com.example.mpti_app.LoginActivity;
 import com.example.mpti_app.MainActivity;
 import com.example.mpti_app.R;
 import com.example.mpti_app.SignupActivity;
+import com.example.mpti_app.fragment.friendship.Friendship_q01;
 import com.example.mpti_app.message.MessageActivity;
+import com.example.mpti_app.model.ChatModel;
 import com.example.mpti_app.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -52,6 +59,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.security.AccessController;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,6 +68,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AccountFragment extends Fragment {
     @Nullable
     private static final  int PICK_FROM_ALBUM = 10;
+    private Button revoke;
     private Button editMbti;
     private Button editProfile;
     private FirebaseAuth firebaseAuth;
@@ -80,8 +89,11 @@ public class AccountFragment extends Fragment {
 
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
+        revoke = (Button) view.findViewById(R.id.revoke);
         Button logout = (Button) view.findViewById(R.id.accountFragment_butto_logout);
         editMbti = (Button) view.findViewById(R.id.accountFragment_button_mpti);
         profile = (CircleImageView) view.findViewById(R.id.AccountFragment_profile_image);
@@ -208,6 +220,8 @@ public class AccountFragment extends Fragment {
 
 
 
+
+
        logout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -217,6 +231,60 @@ public class AccountFragment extends Fragment {
                firebaseAuth.signOut();
            }
        });
+
+
+       revoke.setOnClickListener(new View.OnClickListener() {
+
+           @Override
+           public void onClick(View view) {
+
+               Dialog revoke_dialog;
+
+               revoke_dialog = new Dialog(view.getContext());       // Dialog 초기화
+               revoke_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+               revoke_dialog.setContentView(R.layout.dialog_revoke);             // xml 레이아웃 파일과 연결
+
+               revoke_dialog.show(); // 다이얼로그 띄우기
+               revoke_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+               Button yes = (Button) revoke_dialog.findViewById(R.id.yesBtn);
+               Button no = (Button) revoke_dialog.findViewById(R.id.noBtn);
+
+               yes.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View view) {
+
+                       Log.d("yes.setOnClickListener : ",String.valueOf(FirebaseAuth.getInstance().getCurrentUser()));
+                       FirebaseAuth.getInstance().getCurrentUser().delete();
+
+                       Map<String,Object> stringObjectMap = new HashMap<>();
+                       stringObjectMap.put("userName","탈퇴한 사용자");
+                       FirebaseDatabase.getInstance().getReference("users").child(myUid).updateChildren(stringObjectMap);
+
+                       Log.d("yes.setOnClickListener(before): ",String.valueOf(FirebaseAuth.getInstance().getCurrentUser()));
+
+
+
+                   }
+
+               });
+
+
+
+               no.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View view) {
+                       revoke_dialog.dismiss();
+                   }
+               });
+
+
+           }
+       });
+
+
+
 
 
 

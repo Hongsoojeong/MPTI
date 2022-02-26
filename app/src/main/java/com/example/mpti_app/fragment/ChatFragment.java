@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Fragment;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -63,6 +65,9 @@ public class ChatFragment extends Fragment {
         private ArrayList<String> destinationUsers = new ArrayList<>();
 
         public ChatRecyclerViewAdapter() {
+
+
+
             uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
             FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -96,22 +101,34 @@ public class ChatFragment extends Fragment {
             //chat방에 있는 user를 체크
             for (String user : chatModels.get(position).users.keySet()){
 
-                if(!user.equals(uid)){
-                    destinationUid = user;
-                    destinationUsers.add(destinationUid);
 
-                }
+                    if (!user.equals(uid)) {
+                        destinationUid = user;
+                        destinationUsers.add(destinationUid);
+
+                    }
+
             }
+
+            String finalDestinationUid = destinationUid;
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     UserModel userModel = dataSnapshot.getValue(UserModel.class);
 
-                    Glide.with(customViewHolder.imageView.getContext())
-                            .load(userModel.profileImageUrl)
-                            .apply(new RequestOptions().circleCrop())
-                            .into(customViewHolder.imageView);
-                    customViewHolder.textView_title.setText(userModel.userName);
+                    if (FirebaseDatabase.getInstance().getReference("users").child(finalDestinationUid).child("userName").equals("null")){
+                        customViewHolder.textView_title.setText("탈퇴한 회원입니다");
+                        Log.d("users 들어갔나?", "들어갔냐구");
+                    }
+
+                    else {
+
+                        Glide.with(customViewHolder.imageView.getContext())
+                                .load(userModel.profileImageUrl)
+                                .apply(new RequestOptions().circleCrop())
+                                .into(customViewHolder.imageView);
+                        customViewHolder.textView_title.setText(userModel.userName);
+                    }
                 }
 
                 @Override
@@ -119,6 +136,7 @@ public class ChatFragment extends Fragment {
 
                 }
             });
+
             //메세지를 내림차순으로 정렬 후 마지막 메세지의 키값을 가져옴
             Map<String,ChatModel.Comment> commentMap = new TreeMap<>(Collections.reverseOrder());
             commentMap.putAll(chatModels.get(position).comments);
@@ -134,7 +152,6 @@ public class ChatFragment extends Fragment {
                         startActivity(intent);
                     }
                 });
-
 
                 return; //아무런 메세지를 생성하지않았을 때 오류를 잡음
             }

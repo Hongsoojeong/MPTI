@@ -52,6 +52,7 @@ import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
 
+    private boolean image=false;
     private static final  int PICK_FROM_ALBUM = 10;
     private EditText email;
     private EditText name;
@@ -60,7 +61,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button signup;
 
     private ImageView profile;
-    private Uri imageUri;
+    private Uri imageUri=null;
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -160,10 +161,13 @@ public class SignupActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if (password.getText().length()>=6){
                 password_fill[0] =true;}
-                if (email_fill[0]==true || name.getText().toString().length()>0 || password_fill[0]==true){
+
+                if (email_fill[0]==true&&name.getText().toString().length()>0 && password_fill[0]==true){
+                    Log.d("after imageUri", String.valueOf(imageUri));
                     signup.setVisibility(View.VISIBLE);
                 }
                 else{
+                    Log.d("after imageUri", String.valueOf(imageUri));
                     signup.setVisibility(View.INVISIBLE);
                 }
             }
@@ -295,6 +299,7 @@ public class SignupActivity extends AppCompatActivity {
                         profile.setImageURI(intent.getData()); // 가운데 뷰를 바꿈
                         imageUri = intent.getData();// 이미지 경로 원본
                         Log.d("TAG suuccess", "intent : "+data.getData());
+                        Log.d("imageUri", String.valueOf(imageUri));
 
                     }
                 }

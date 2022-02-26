@@ -54,7 +54,7 @@
       android:layout_width="match_parent"
       android:layout_weight="10"
       android:elevation="10dp"
-      android:background="#2E3073"
+      android:background="@drawable/edit_background"
       android:layout_height="50dp">
 
     <EditText

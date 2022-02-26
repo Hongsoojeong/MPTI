@@ -131,8 +131,12 @@ public class PeopleFragment extends Fragment  {
                     .load(userModels.get(position).profileImageUrl)
                     .apply(new RequestOptions().circleCrop())
                     .into(((CustomViewHolder)holder).imageView);
-            ((CustomViewHolder)holder).textView.setText(userModels.get(position).userName);
-
+            if (userModels.get(position).userName.equals("null")){
+                ((CustomViewHolder)holder).textView.setText("탈퇴한 사용자입니다.");
+            }
+            else {
+                ((CustomViewHolder) holder).textView.setText(userModels.get(position).userName);
+            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

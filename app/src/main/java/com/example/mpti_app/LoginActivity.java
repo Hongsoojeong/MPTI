@@ -212,8 +212,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         Log.d("onStart","사용전");
 
+
+
+
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
+Log.d("firebaseAuth.getCurrentUser()", String.valueOf(firebaseAuth.getCurrentUser()));
         if(currentUser != null){ // 자동로그인
 
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

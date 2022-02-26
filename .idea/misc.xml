@@ -10,6 +10,8 @@
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/buttom_send_backgournd.xml" value="0.3125" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/button.xml" value="0.3475" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/button_ic_color.xml" value="0.3125" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/circle.xml" value="0.324" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/edit_background.xml" value="0.324" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/edit_text.xml" value="0.22" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/fromleft.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/ic__account.xml" value="0.17552083333333332" />
@@ -29,7 +31,10 @@
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/ic_mpti_logo.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/ic_people.xml" value="0.3125" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/ic_right_bubble.xml" value="0.30462962962962964" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/left_bubble.xml" value="0.324" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/progressbar_custom.xml" value="0.319" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/round.xml" value="0.32" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/round_bg.xml" value="0.32" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/send_background.xml" value="0.3125" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/simple_bubble.xml" value="0.2565" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/top_bar.xml" value="0.2525" />
@@ -40,6 +45,7 @@
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_test.xml" value="0.25" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/dialog_comment.xml" value="0.33" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/dialog_revoke.xml" value="0.5" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/fragment_account.xml" value="0.33" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/fragment_chat.xml" value="0.3776041666666667" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/fragment_friendship_q01.xml" value="0.33" />
