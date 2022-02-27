@@ -28,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.R;
 import com.example.mpti_app.SignupActivity;
+import com.example.mpti_app.fragment.PeopleFragment;
 import com.example.mpti_app.model.ChatModel;
 import com.example.mpti_app.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -57,7 +58,7 @@ public class MessageActivity extends AppCompatActivity {
     private String destinationUid;
     private TextView button;
     private EditText editText;
-
+private Button back;
     private String uid;
     private  String chatRoomUid;
 
@@ -91,13 +92,19 @@ public class MessageActivity extends AppCompatActivity {
 
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid(); // 채팅을 요구하는 아이디. 즉, 단말기가 로그인된 UID
         destinationUid = getIntent().getStringExtra("destinationUid");// 채팅을 당하는 아이디
-
+        back= (Button) findViewById(R.id.back_btn);
         button = (TextView) findViewById(R.id.messageActivity_button);;
         editText = (EditText) findViewById(R.id.messageActivity_editText);
 
 
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -268,13 +275,24 @@ public class MessageActivity extends AppCompatActivity {
             }
             //상대방이 보낸 메세지
             else{
+
+
+               if (userModel.userName.equals("탈퇴한 사용자")){
+
+                    ((MessageViewHolder) holder).imageView_profile.setImageResource(R.drawable.ic_baseline_insert_emoticon_24);
+                    int grey = ContextCompat.getColor(MessageActivity.this, R.color.grey);
+                   messageViewHolder.textView_name.setTextColor(grey);
+                   messageViewHolder.textView_name.setText("(탈퇴한 사용자)");
+                }
+
+               else{
                 Glide.with(holder.itemView.getContext())
                         .load(userModel.profileImageUrl)
                         .apply(new RequestOptions().circleCrop())
                         .into(messageViewHolder.imageView_profile);
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+userModel.userName);
 
-                messageViewHolder.textView_name.setText(userModel.userName);
+                messageViewHolder.textView_name.setText(userModel.userName);}
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.left_bubble);
                 int white = ContextCompat.getColor(MessageActivity.this, R.color.white);
                 messageViewHolder.textView_message.setTextColor(white);

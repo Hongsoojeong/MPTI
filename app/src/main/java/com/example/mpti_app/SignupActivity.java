@@ -242,10 +242,6 @@ public class SignupActivity extends AppCompatActivity {
                                 final String uid = task.getResult().getUser().getUid();
                                 Log.d("imageUri :", String.valueOf(imageUri));
 
-                                Map<String,Object> stringObjectMap = new HashMap<>();
-                                stringObjectMap.put("comment","hello :D");
-                                FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
-
 
                                 FirebaseStorage.getInstance().getReference().child("userImages").child(uid).putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                     @Override

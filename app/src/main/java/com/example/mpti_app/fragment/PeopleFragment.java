@@ -95,6 +95,9 @@ public class PeopleFragment extends Fragment  {
                         if (userModel.uid.equals(myUid)){
                             continue;
                         }
+                        else{
+
+                        }
                         userModels.add(userModel);
                     }
 
@@ -131,9 +134,13 @@ public class PeopleFragment extends Fragment  {
                     .load(userModels.get(position).profileImageUrl)
                     .apply(new RequestOptions().circleCrop())
                     .into(((CustomViewHolder)holder).imageView);
-            if (userModels.get(position).userName.equals("null")){
-                ((CustomViewHolder)holder).textView.setText("탈퇴한 사용자입니다.");
+
+
+
+            if (userModels.get(position).userName.equals("탈퇴한 사용자")){
+                ((CustomViewHolder)holder).imageView.setImageResource(R.drawable.ic_baseline_insert_emoticon_24);
             }
+
             else {
                 ((CustomViewHolder) holder).textView.setText(userModels.get(position).userName);
             }

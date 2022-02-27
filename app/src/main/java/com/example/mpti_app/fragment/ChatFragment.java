@@ -3,6 +3,7 @@ package com.example.mpti_app.fragment;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -116,9 +117,9 @@ public class ChatFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     UserModel userModel = dataSnapshot.getValue(UserModel.class);
 
-                    if (FirebaseDatabase.getInstance().getReference("users").child(finalDestinationUid).child("userName").equals("null")){
-                        customViewHolder.textView_title.setText("탈퇴한 회원입니다");
-                        Log.d("users 들어갔나?", "들어갔냐구");
+                    if (userModel.userName.equals("탈퇴한 사용자")){
+                        Log.d("탈퇴한 사용자?",userModel.userName);
+                        customViewHolder.imageView.setImageResource(R.drawable.ic_baseline_insert_emoticon_24);
                     }
 
                     else {

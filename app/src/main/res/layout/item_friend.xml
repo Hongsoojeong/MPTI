@@ -15,7 +15,7 @@
             android:layout_height="50dp"/>
     <TextView
         android:id="@+id/frienditem_textview"
-        android:text="아이디"
+        android:text="탈퇴한 사용자"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
