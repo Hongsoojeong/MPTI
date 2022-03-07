@@ -5,12 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.mpti_app.LoginActivity;
 import com.example.mpti_app.R;
+import com.example.mpti_app.fragment.MainFragment;
 import com.example.mpti_app.fragment.friendship.Friendship_q01;
+import com.example.mpti_app.fragment.love.love_q01;
+import com.example.mpti_app.fragment.work.work_q01;
 
 public class ShopImagePagerAdapter extends PagerAdapter {
 
@@ -48,6 +54,20 @@ public class ShopImagePagerAdapter extends PagerAdapter {
         imageView.setImageResource(images[position]);
         container.addView(view);
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (position==0){
+
+                }
+                else if (position==1){
+
+                }
+                else{
+
+                }
+            }
+        });
 
         return view;
     }

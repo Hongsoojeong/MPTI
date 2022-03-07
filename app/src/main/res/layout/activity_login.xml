@@ -27,26 +27,27 @@
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:hintTextColor="#81A5FF"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:hintTextColor="#5C54D6"
         app:startIconTint="#5C54D6"
         android:hint="Email *"
         app:startIconDrawable="@drawable/ic_baseline_email_24"
         app:endIconMode="clear_text"
+        app:boxStrokeColor="#B3C4FF"
         >
 
         <com.google.android.material.textfield.TextInputEditText
          android:singleLine="true"
-         android:layout_marginLeft="50dp"
-         android:layout_marginRight="50dp"
+            android:padding="10dp"
          android:textStyle="bold"
          android:textColor="#3F4045"
          android:id="@+id/loginActivity_edittext_id"
          android:cursorVisible="false"
             android:textSize="15dp"
          android:textColorHighlight="@color/main"
-         android:textColorHint="@color/main"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"/>
+         android:textColorHint="@color/main" android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,9 +55,12 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:endIconMode="password_toggle"
         android:layout_marginTop="13dp"
-        app:hintTextColor="#81A5FF"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        app:hintTextColor="#5C54D6"
         android:layout_width="match_parent"
         app:startIconTint="#5C54D6"
+        app:boxStrokeColor="#B3C4FF"
         app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
         android:layout_height="wrap_content">
      <EditText
@@ -65,8 +69,7 @@
          android:imeOptions="actionDone"
          android:cursorVisible="false"
          android:textStyle="bold"
-         android:layout_marginLeft="50dp"
-         android:layout_marginRight="50dp"
+
          android:textColorHint="@color/main"
          android:textColor="#3F4045"
          android:id="@+id/loginActivity_edittext_password"
@@ -83,7 +86,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:text="Login"
-        android:background="@drawable/test_button"
+        android:background="@drawable/result_logo"
         android:id="@+id/loginActivity_button_login"
         android:layout_width="match_parent"
         android:textStyle="bold"

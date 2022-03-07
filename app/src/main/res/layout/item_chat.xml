@@ -23,11 +23,12 @@
             android:layout_height="wrap_content"
             android:text="(탈퇴한 사용자)"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="12dp"
             android:textStyle="bold" />
         <TextView
             android:text="먼저 말을 걸어 즐거운 인연을 만들어보아요 :)"
             android:textStyle="bold"
+            android:textSize="13dp"
             android:id="@+id/chatitem_chatitem_textview_lastMessage"
             android:layout_below="@id/chatitem_textview_title"
             android:layout_width="wrap_content"

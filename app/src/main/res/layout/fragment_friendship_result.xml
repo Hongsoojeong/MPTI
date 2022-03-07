@@ -100,45 +100,49 @@
         android:textSize="25dp"
         android:text="당신과 환상의 짝궁은.."
         android:textColor="@color/main" />
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/main"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:id="@+id/mbti_couple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
 
-    <TextView
-        android:fontFamily="@font/red_hat"
-        android:textStyle="bold"
-        android:textColor="@color/main"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:id="@+id/mbti_couple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:id="@+id/result_save"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="프로필에 저장하기"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:background="@drawable/result_logo"
+                    />
+                <Button
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:id="@+id/result_ok"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="저장하지 않고 넘어가기"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:background="@drawable/result_logo"
+                    />
+            </LinearLayout>
 
-    <Button
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:id="@+id/result_ok"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="확인"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:background="@drawable/result_logo"
-        />
-    <Button
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:id="@+id/result_save"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="저장하기"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:background="@drawable/result_logo"
-        />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -8,7 +8,7 @@
     tools:context=".fragment.friendship.Friendship_q03">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -16,14 +16,15 @@
         android:fontFamily="@font/red_hat"
         android:text="@string/friendship_q03"
         android:textColor="@color/main"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.087"
+        android:layout_marginLeft="24dp" />
 
     <TextView
         android:layout_marginRight="10dp"
@@ -43,7 +44,7 @@
 
     <LinearLayout
         android:layout_marginTop="200dp"
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:orientation="vertical"
@@ -59,32 +60,33 @@
         <TextView
             android:id="@+id/q01_option3Y"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/result_logo"
-            android:fontFamily="@font/red_hat"
-            android:gravity="center"
-            android:text="@string/yes"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/q01_option3N"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@drawable/result_logo"
             android:fontFamily="@font/red_hat"
             android:gravity="center"
-            android:text="@string/no"
+            android:text="@string/friendship_03A"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/q01_option3N"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/result_logo"
+            android:fontFamily="@font/red_hat"
+            android:gravity="center"
+            android:text="@string/friendship_03B"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline

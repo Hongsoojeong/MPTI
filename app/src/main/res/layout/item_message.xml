@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/messageItem_textView_name"
-        android:textSize="12dp"
+        android:textSize="10sp"
         android:text="이름"
         android:fontFamily="@font/red_hat"
         android:textStyle="bold"
@@ -38,8 +38,13 @@
 
     <TextView
         android:text="메세지"
+        android:textSize="12sp"
+        android:background="@color/main"
         android:fontFamily="@font/red_hat"
-        android:padding="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:id="@+id/messageItem_textView_message"
@@ -64,7 +69,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:text="2011.11.11 11:11"
-        android:textSize="9dp"
+        android:textSize="9sp"
         android:textStyle="bold"
         android:textColor="#838383"
         android:layout_width="wrap_content"

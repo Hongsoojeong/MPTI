@@ -57,11 +57,11 @@ public class SplashActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             boolean updated = task.getResult();
                             Log.d(TAG, "Config params updated: " + updated);
-                            Toast.makeText(SplashActivity.this, "Fetch and activate succeeded",
+                            Toast.makeText(SplashActivity.this, "MPTI에 오신걸 환영합니다 :)",
                                     Toast.LENGTH_SHORT).show();
 
                         } else {
-                            Toast.makeText(SplashActivity.this, "Fetch failed",
+                            Toast.makeText(SplashActivity.this, "연결에 실패되었습니다 :(",
                                     Toast.LENGTH_SHORT).show();
                         }
 

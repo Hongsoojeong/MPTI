@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,11 +26,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -85,7 +89,53 @@ public class SignupActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
         profile = (ImageView) findViewById(R.id.sinupActivity_imageview_profile);
+
+
+
+        Dialog revoke_dialog;
+
+        revoke_dialog = new Dialog(this);       // Dialog 초기화
+        revoke_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        revoke_dialog.setContentView(R.layout.dialog_revoke);             // xml 레이아웃 파일과 연결
+
+        revoke_dialog.show(); // 다이얼로그 띄우기
+        revoke_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+        TextView text = (TextView) revoke_dialog.findViewById(R.id.dialog_text);
+        Button yes = (Button) revoke_dialog.findViewById(R.id.yesBtn);
+        Button no = (Button) revoke_dialog.findViewById(R.id.noBtn);
+
+        text.setText("1. 프로필 사진을 설정하셔야 가입이 가능합니다\n2. 비밀번호는 6자 이상 설정해주세요");
+        yes.setText("확인");
+        no.setText("");
+
+
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                revoke_dialog.dismiss();
+
+            }
+
+        });
+
+
+
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+
+
+
+
+
 
 
         profile.setOnClickListener(new View.OnClickListener() {

@@ -98,7 +98,12 @@ public class PeopleFragment extends Fragment  {
                         else{
 
                         }
+                        if (userModel.userName.equals("탈퇴한 사용자")){
+
+                        }
+                        else{
                         userModels.add(userModel);
+                        }
                     }
 
                     notifyDataSetChanged();

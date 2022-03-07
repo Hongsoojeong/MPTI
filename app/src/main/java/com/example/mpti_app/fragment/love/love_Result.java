@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -151,6 +152,7 @@ public class love_Result extends Fragment {
             public void onClick(View view) {
                 Map<String,Object> stringObjectMap = new HashMap<>();
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                Toast.makeText(view.getContext(), "저장이 완료되었습니다. \n프로필을 통해 확인해보세요 :)", Toast.LENGTH_SHORT).show();
                 stringObjectMap.put("love",finalResult_mpti);
                 FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
             }

@@ -7,6 +7,7 @@ import java.util.List;
 public class UserModel  {
     public String userName;
     public String uid;
+    public String pushToken;
     public String comment="";
     public String profileImageUrl="";
     public String friendship ="";

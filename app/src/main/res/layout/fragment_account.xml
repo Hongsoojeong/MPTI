@@ -26,19 +26,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <ImageView
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:src="@drawable/your_profile"
-            app:tint="@color/black" />
+            app:tint="@color/main" />
         <de.hdodenhof.circleimageview.CircleImageView
             android:padding="4dp"
             android:layout_marginTop="33dp"
             android:layout_gravity="center"
             android:id="@+id/AccountFragment_profile_image"
-            android:layout_width="314dp"
-            android:layout_height="314dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:background="@drawable/mbti_result_logo"
             />
     </LinearLayout>
@@ -134,12 +134,13 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
         android:id="@+id/friendship_result"
         android:textStyle="bold"
-        android:textSize="15dp"
-        android:background="@drawable/in_firendship"
-        android:textColor="@color/grey"
+        android:textSize="17dp"
+        android:background="@drawable/in_friendship"
+        android:textColor="#2E3073"
+
         android:text="테스트 미완료"/>
 
         </LinearLayout>
@@ -152,20 +153,23 @@
 
 
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="left">
     <TextView
+
+        android:text="테스트 미완료"
         android:background="@drawable/in_love"
-        android:textColor="@color/grey"
+        android:textColor="#2E3073"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:id="@+id/love_result"
         android:textStyle="bold"
-        android:textSize="15dp"
+        android:textSize="17dp"
         />
 
         </LinearLayout>
@@ -176,27 +180,32 @@
 
 
         <LinearLayout
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center">
 
     <TextView
+        android:text="테스트 미완료"
         android:background="@drawable/in_work"
-        android:textColor="@color/grey"
+        android:textColor="#2E3073"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:id="@+id/workship_result"
         android:textStyle="bold"
-        android:textSize="15dp" />
+        android:textSize="17dp" />
 
         </LinearLayout>
 
-
+<LinearLayout
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
         <Button
             android:background="@drawable/logout_logo"
             style="?android:attr/borderlessButtonStyle"
@@ -205,17 +214,19 @@
             android:textStyle="bold"
             android:id="@+id/accountFragment_butto_logout"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="27dp"
             android:layout_toRightOf="@+id/accountFragment_butto_comment"
             />
         <Button
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/revoke_button"
             android:id="@+id/revoke"
             android:layout_gravity="center"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="27dp"
    />
+
+</LinearLayout>
     </LinearLayout>
 
 

@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.mpti_app.LoginActivity;
 import com.example.mpti_app.R;
 import com.example.mpti_app.fragment.AccountFragment;
 import com.example.mpti_app.fragment.ChatFragment;
@@ -157,6 +159,7 @@ public class Friendship_Result extends Fragment {
                 Map<String,Object> stringObjectMap = new HashMap<>();
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 stringObjectMap.put("friendship",finalResult_mpti);
+                Toast.makeText(view.getContext(), "저장이 완료되었습니다. \n프로필을 통해 확인해보세요 :)", Toast.LENGTH_SHORT).show();
                 FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
             }
         });

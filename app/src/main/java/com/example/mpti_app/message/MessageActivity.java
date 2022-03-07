@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,16 +22,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.R;
 import com.example.mpti_app.SignupActivity;
 import com.example.mpti_app.fragment.PeopleFragment;
 import com.example.mpti_app.model.ChatModel;
+import com.example.mpti_app.model.NotificationModel;
 import com.example.mpti_app.model.UserModel;
+import com.google.android.gms.common.api.Response;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -44,6 +49,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,6 +58,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
+
+import javax.security.auth.callback.Callback;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -62,6 +70,8 @@ private Button back;
     private String uid;
     private  String chatRoomUid;
 
+
+    private  UserModel destinatioinuserModel;
     private RecyclerView recyclerView;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
@@ -70,7 +80,7 @@ private Button back;
     private ValueEventListener valueEventListener;
     int peopleCount=0;
 
-    @Override
+/*    @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         View view = getCurrentFocus();
         if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
@@ -83,7 +93,7 @@ private Button back;
         }
         return super.dispatchTouchEvent(ev);
     }
-
+*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +166,10 @@ private Button back;
         checkChatRoom();
 
     }
+
+
+
+
     void checkChatRoom(){
         FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -267,7 +281,6 @@ private Button back;
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.send_background);
                 messageViewHolder.linearLayout_message.setGravity(Gravity.RIGHT);
-                messageViewHolder.textView_message.setTextSize(12);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_left);
 
@@ -293,12 +306,11 @@ private Button back;
                 Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+userModel.userName);
 
                 messageViewHolder.textView_name.setText(userModel.userName);}
-                messageViewHolder.textView_message.setBackgroundResource(R.drawable.left_bubble);
+                messageViewHolder.textView_message.setBackgroundResource(R.drawable.simple_bubble);
                 int white = ContextCompat.getColor(MessageActivity.this, R.color.white);
                 messageViewHolder.textView_message.setTextColor(white);
                 messageViewHolder.textView_message.setText(comments.get(position).message);
                 messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_message.setTextSize(12);
                 messageViewHolder.linearLayout_message.setGravity(Gravity.LEFT);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
                 setReadCounter(position, messageViewHolder.textView_readCounter_right);
