@@ -18,8 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +55,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -69,6 +72,7 @@ public class AccountFragment extends Fragment {
     @Nullable
     private static final  int PICK_FROM_ALBUM = 10;
     private Button revoke;
+    private Switch aSwitch;
     private Button editMbti;
     private Button editProfile;
     private FirebaseAuth firebaseAuth;
@@ -99,7 +103,6 @@ public class AccountFragment extends Fragment {
         profile = (CircleImageView) view.findViewById(R.id.AccountFragment_profile_image);
         stateMessage = (TextView) view.findViewById(R.id.state_message);
         mpti = (TextView) view.findViewById(R.id.Fragment_account_profile_mpti);
-
         friendship = (TextView) view.findViewById(R.id.friendship_result);
         love = (TextView) view.findViewById(R.id.love_result);
         work = (TextView) view.findViewById(R.id.workship_result);
@@ -220,8 +223,6 @@ public class AccountFragment extends Fragment {
 
 
 
-
-
        logout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -229,6 +230,7 @@ public class AccountFragment extends Fragment {
                startActivity(intent);
                firebaseAuth = FirebaseAuth.getInstance();
                firebaseAuth.signOut();
+
            }
        });
 

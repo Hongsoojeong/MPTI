@@ -44,6 +44,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.storage.FirebaseStorage;
@@ -108,7 +109,7 @@ public class SignupActivity extends AppCompatActivity {
         Button yes = (Button) revoke_dialog.findViewById(R.id.yesBtn);
         Button no = (Button) revoke_dialog.findViewById(R.id.noBtn);
 
-        text.setText("1. 프로필 사진을 설정하셔야 가입이 가능합니다\n2. 비밀번호는 6자 이상 설정해주세요");
+        text.setText("1. 프로필 사진을 설정하셔야 가입이 가능합니다\n※ 프로필사진은 한번밖에 설정이 안되니,\n신중하게 선택해주세요 :)\n\n2. 비밀번호는 6자 이상 설정해주세요");
         yes.setText("확인");
         no.setText("");
 
@@ -291,6 +292,7 @@ public class SignupActivity extends AppCompatActivity {
                                 progress.setVisibility(View.VISIBLE);
                                 final String uid = task.getResult().getUser().getUid();
                                 Log.d("imageUri :", String.valueOf(imageUri));
+
 
 
                                 FirebaseStorage.getInstance().getReference().child("userImages").child(uid).putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {

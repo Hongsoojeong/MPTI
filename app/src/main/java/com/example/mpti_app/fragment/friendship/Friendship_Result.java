@@ -161,6 +161,8 @@ public class Friendship_Result extends Fragment {
                 stringObjectMap.put("friendship",finalResult_mpti);
                 Toast.makeText(view.getContext(), "저장이 완료되었습니다. \n프로필을 통해 확인해보세요 :)", Toast.LENGTH_SHORT).show();
                 FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
+                getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new AccountFragment()).commit();
+
             }
         });
 

@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
@@ -27,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mpti_app.R;
 import com.example.mpti_app.SignupActivity;
@@ -35,7 +33,6 @@ import com.example.mpti_app.fragment.PeopleFragment;
 import com.example.mpti_app.model.ChatModel;
 import com.example.mpti_app.model.NotificationModel;
 import com.example.mpti_app.model.UserModel;
-import com.google.android.gms.common.api.Response;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -46,6 +43,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
@@ -59,7 +57,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
-import javax.security.auth.callback.Callback;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttp;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+
+
+
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -94,6 +103,7 @@ private Button back;
         return super.dispatchTouchEvent(ev);
     }
 */
+private UserModel destinationUserModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +167,7 @@ private Button back;
                     FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            sendGcm();
                             editText.setText("");
                         }
                     });
@@ -165,8 +176,45 @@ private Button back;
         });
         checkChatRoom();
 
+
     }
 
+
+
+    void sendGcm(){
+        Gson gson = new Gson();
+
+
+        NotificationModel notificationModel = new NotificationModel();
+        notificationModel.to = destinationUserModel.pushToken;
+        notificationModel.notification.title = "새로운 메세지가 도착했습니다.";
+        notificationModel.notification.text= editText.getText().toString();
+
+Log.d("notificationModel.notification.text",notificationModel.notification.text);
+
+       RequestBody requestBody = RequestBody.create(gson.toJson(notificationModel), MediaType.parse("application/json; charset=utf8"));
+
+        Request request = new Request.Builder()
+                .header("Content-Type", "application/json")
+                .addHeader("Authorization", "key=AAAAEAghfXE:APA91bGzDdkeM7Fis_zitQlbURfKqfEkER7hVwkuQc98o-RliVxtH5Z79zyBqzVhKY_HvHtebME755OYN9NVlgvSvSwQw7FGNJPzu3-aASMpsI0iQ-88MqSyUU9GexY-trk7zey6BODr")
+                .url("https://fcm.googleapis.com/fcm/send")
+                .post(requestBody)
+                .build();
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+            }
+        });
+
+    }
 
 
 
@@ -194,7 +242,6 @@ private Button back;
     class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         List<ChatModel.Comment> comments;
-        UserModel userModel;
         public RecyclerViewAdapter() {
             comments = new ArrayList<>();
 
@@ -203,7 +250,7 @@ private Button back;
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    userModel = dataSnapshot.getValue(UserModel.class);
+                    destinationUserModel = dataSnapshot.getValue(UserModel.class);
                     getMessageList();
                 }
 
@@ -290,7 +337,7 @@ private Button back;
             else{
 
 
-               if (userModel.userName.equals("탈퇴한 사용자")){
+               if (destinationUserModel.userName.equals("탈퇴한 사용자")){
 
                     ((MessageViewHolder) holder).imageView_profile.setImageResource(R.drawable.ic_baseline_insert_emoticon_24);
                     int grey = ContextCompat.getColor(MessageActivity.this, R.color.grey);
@@ -300,12 +347,12 @@ private Button back;
 
                else{
                 Glide.with(holder.itemView.getContext())
-                        .load(userModel.profileImageUrl)
+                        .load(destinationUserModel.profileImageUrl)
                         .apply(new RequestOptions().circleCrop())
                         .into(messageViewHolder.imageView_profile);
-                Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+userModel.userName);
+                Log.d("RecyclerView.ViewHoder : onBindViewHolder","상대방이 보낸 메세지"+destinationUserModel.userName);
 
-                messageViewHolder.textView_name.setText(userModel.userName);}
+                messageViewHolder.textView_name.setText(destinationUserModel.userName);}
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.simple_bubble);
                 int white = ContextCompat.getColor(MessageActivity.this, R.color.white);
                 messageViewHolder.textView_message.setTextColor(white);

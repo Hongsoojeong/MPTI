@@ -17,10 +17,10 @@
       android:textAlignment="center"
       >
     <Button
-        android:layout_marginLeft="2dp"
+        android:layout_marginLeft="10dp"
         android:id="@+id/back_btn"
-        android:background="@drawable/ic_baseline_arrow_back_24"
-        android:layout_width="30dp"
+        android:background="@drawable/back_arrow"
+        android:layout_width="25dp"
         android:backgroundTint="@color/main"
         android:layout_height="25dp"
         android:layout_gravity="center"
@@ -29,7 +29,7 @@
         />
 
     <TextView
-        android:layout_marginRight="32dp"
+        android:layout_marginRight="35dp"
         android:textStyle="bold"
         android:padding="3dp"
         android:layout_width="match_parent"
@@ -71,7 +71,7 @@
     <EditText
         android:hint="바른 말 고운 말 채팅 부탁드려요 :)"
         android:paddingLeft="7dp"
-        android:paddingTop="5dp"
+        android:paddingTop="2dp"
         android:lineSpacingExtra="2sp"
         android:textSize="15dp"
         android:layout_marginTop="5dp"
@@ -94,7 +94,7 @@
         android:layout_height="30dp"
         android:layout_marginRight="3dp"
         android:layout_weight="10"
-        android:background="@drawable/ic_baseline_send_24"
+        android:background="@drawable/send"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/maruburi_bold" />
 

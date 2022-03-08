@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.mpti_app.R;
+import com.example.mpti_app.fragment.AccountFragment;
 import com.example.mpti_app.fragment.MainFragment;
 import com.example.mpti_app.test.TestModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -155,6 +156,8 @@ public class work_Result extends Fragment {
                 Toast.makeText(view.getContext(), "저장이 완료되었습니다. \n프로필을 통해 확인해보세요 :)", Toast.LENGTH_SHORT).show();
                 stringObjectMap.put("work",finalResult_mpti);
                 FirebaseDatabase.getInstance().getReference("users").child(uid).updateChildren(stringObjectMap);
+                getFragmentManager().beginTransaction().replace(R.id.mainactivity_framelayout, new AccountFragment()).commit();
+
             }
         });
 

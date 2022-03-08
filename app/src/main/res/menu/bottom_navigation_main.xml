@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_test"
-        android:icon="@drawable/ic_baseline_favorite_24"
+        android:icon="@drawable/test"
+        android:iconTint="@color/main"
         android:enabled="true"
         android:title="Test"
         />
@@ -13,13 +14,14 @@
         android:title="People"/>
     <item
         android:id="@+id/action_chat"
-        android:icon="@drawable/ic_message"
+        android:icon="@drawable/ic_talk"
+        android:iconTint="@color/main"
         android:enabled="true"
         android:title="Chat"/>
 
     <item
         android:enabled="true"
         android:id="@+id/action_account"
-        android:icon="@drawable/ic__account"
+        android:icon="@drawable/ic_account"
         android:title="Account"/>
 </menu>

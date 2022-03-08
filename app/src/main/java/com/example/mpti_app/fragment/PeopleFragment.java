@@ -1,9 +1,12 @@
 package com.example.mpti_app.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,7 +15,9 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -45,6 +50,7 @@ import java.util.List;
 import java.util.zip.Inflater;
 
 
+
 public class PeopleFragment extends Fragment  {
     @Nullable
     @Override
@@ -58,6 +64,47 @@ public class PeopleFragment extends Fragment  {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.peoplefragment_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
         recyclerView.setAdapter(new PeopleFragmentRecyclerViewAdapter());
+
+
+
+
+        Dialog revoke_dialog;
+
+        revoke_dialog = new Dialog(view.getContext());       // Dialog 초기화
+        revoke_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        revoke_dialog.setContentView(R.layout.dialog_revoke);             // xml 레이아웃 파일과 연결
+
+        revoke_dialog.show(); // 다이얼로그 띄우기
+        revoke_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+        TextView text = (TextView) revoke_dialog.findViewById(R.id.dialog_text);
+        Button yes = (Button) revoke_dialog.findViewById(R.id.yesBtn);
+        Button no = (Button) revoke_dialog.findViewById(R.id.noBtn);
+
+        text.setText("MPTI의 모든 유저 목록입니다. \n원하시는 MPTI를 골라 해당 MPTI 유저분들과\n자유롭게 소통해보세요!\n\n※ 1. 욕설 및 비하발언을 할 경우\n   활동 제재가 걸릴 수 있습니다\n   2. 특정 유저의 신고를 원하시는 경우, \n    운영자에게 문의 부탁드립니다.");
+        yes.setText("확인");
+        no.setText("");
+
+
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                revoke_dialog.dismiss();
+
+            }
+
+        });
+
+
+
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
 

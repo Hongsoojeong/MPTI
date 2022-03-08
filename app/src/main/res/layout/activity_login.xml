@@ -30,7 +30,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         app:hintTextColor="#5C54D6"
-        app:startIconTint="#5C54D6"
+        app:startIconTint="#A5B4FF"
         android:hint="Email *"
         app:startIconDrawable="@drawable/ic_baseline_email_24"
         app:endIconMode="clear_text"
@@ -59,7 +59,7 @@
         android:layout_marginRight="50dp"
         app:hintTextColor="#5C54D6"
         android:layout_width="match_parent"
-        app:startIconTint="#5C54D6"
+        app:startIconTint="#A5B4FF"
         app:boxStrokeColor="#B3C4FF"
         app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
         android:layout_height="wrap_content">
@@ -90,7 +90,7 @@
         android:id="@+id/loginActivity_button_login"
         android:layout_width="match_parent"
         android:textStyle="bold"
-        android:layout_height="30dp"/>
+        android:layout_height="35dp"/>
 
     <View
         android:layout_marginTop="10dp"
