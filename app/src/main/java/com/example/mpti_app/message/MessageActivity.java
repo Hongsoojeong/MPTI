@@ -192,6 +192,7 @@ private UserModel destinationUserModel;
 
         Log.d("notificationModel.notification.text",notificationModel.notification.text);
 
+
         RequestBody requestBody = RequestBody.create(gson.toJson(notificationModel), MediaType.parse("application/json; charset=utf8"));
 
         Request request = new Request.Builder()

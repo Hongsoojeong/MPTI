@@ -231,7 +231,6 @@ public class AccountFragment extends Fragment {
                Map<String,Object> stringObjectMap = new HashMap<>();
                stringObjectMap.put("pushToken",""); //로그아웃 시 메세지를 받지못하게 하려고
                FirebaseDatabase.getInstance().getReference("users").child(myUid).updateChildren(stringObjectMap);
-
                firebaseAuth = FirebaseAuth.getInstance();
                firebaseAuth.signOut();
 
