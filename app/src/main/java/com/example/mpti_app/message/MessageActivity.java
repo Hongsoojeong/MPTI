@@ -196,7 +196,7 @@ Log.d("notificationModel.notification.text",notificationModel.notification.text)
 
         Request request = new Request.Builder()
                 .header("Content-Type", "application/json")
-                .addHeader("Authorization", "key=AAAAEAghfXE:APA91bGzDdkeM7Fis_zitQlbURfKqfEkER7hVwkuQc98o-RliVxtH5Z79zyBqzVhKY_HvHtebME755OYN9NVlgvSvSwQw7FGNJPzu3-aASMpsI0iQ-88MqSyUU9GexY-trk7zey6BODr")
+                .addHeader("Authorization", "key=")
                 .url("https://fcm.googleapis.com/fcm/send")
                 .post(requestBody)
                 .build();
