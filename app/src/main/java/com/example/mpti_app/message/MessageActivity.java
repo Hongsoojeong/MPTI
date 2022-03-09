@@ -190,9 +190,9 @@ private UserModel destinationUserModel;
         notificationModel.notification.title = "새로운 메세지가 도착했습니다.";
         notificationModel.notification.text= editText.getText().toString();
 
-Log.d("notificationModel.notification.text",notificationModel.notification.text);
+        Log.d("notificationModel.notification.text",notificationModel.notification.text);
 
-       RequestBody requestBody = RequestBody.create(gson.toJson(notificationModel), MediaType.parse("application/json; charset=utf8"));
+        RequestBody requestBody = RequestBody.create(gson.toJson(notificationModel), MediaType.parse("application/json; charset=utf8"));
 
         Request request = new Request.Builder()
                 .header("Content-Type", "application/json")
