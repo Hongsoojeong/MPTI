@@ -42,7 +42,7 @@
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/drawable/top_bar.xml" value="0.2525" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_message.xml" value="0.5" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_message.xml" value="0.22" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/layout/activity_test.xml" value="0.25" />
@@ -101,6 +101,7 @@
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/menu/toolbar_menu.xml" value="0.25" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2475" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2475" />
+        <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/mipmap-anydpi-v26/ic_mpti_app_logo_round.xml" value="0.343" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/xml/default_config.xml" value="0.2657407407407407" />
         <entry key="..\:/Users/my_yo/AndroidStudioProjects/MPTI_APP/app/src/main/res/xml/searchable.xml" value="0.14074074074074075" />
       </map>

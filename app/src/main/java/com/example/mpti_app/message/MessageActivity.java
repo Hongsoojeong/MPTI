@@ -2,6 +2,7 @@ package com.example.mpti_app.message;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -115,8 +116,6 @@ private UserModel destinationUserModel;
         back= (Button) findViewById(R.id.back_btn);
         button = (TextView) findViewById(R.id.messageActivity_button);;
         editText = (EditText) findViewById(R.id.messageActivity_editText);
-
-
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -184,7 +183,6 @@ private UserModel destinationUserModel;
     void sendGcm(){
         Gson gson = new Gson();
 
-
         NotificationModel notificationModel = new NotificationModel();
         notificationModel.to = destinationUserModel.pushToken;
         notificationModel.notification.title = "새로운 메세지가 도착했습니다.";
@@ -192,31 +190,25 @@ private UserModel destinationUserModel;
 
         Log.d("notificationModel.notification.text",notificationModel.notification.text);
 
-
         RequestBody requestBody = RequestBody.create(gson.toJson(notificationModel), MediaType.parse("application/json; charset=utf8"));
-
         Request request = new Request.Builder()
                 .header("Content-Type", "application/json")
-                .addHeader("Authorization", "key=")
+                .addHeader("Authorization", "key=AAAAEAghfXE:APA91bGzDdkeM7Fis_zitQlbURfKqfEkER7hVwkuQc98o-RliVxtH5Z79zyBqzVhKY_HvHtebME755OYN9NVlgvSvSwQw7FGNJPzu3-aASMpsI0iQ-88MqSyUU9GexY-trk7zey6BODr")
                 .url("https://fcm.googleapis.com/fcm/send")
                 .post(requestBody)
                 .build();
-
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
+                Log.d("onFailure",notificationModel.notification.text);
             }
-
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
+                Log.d("onResponse",notificationModel.notification.text);
             }
         });
-
     }
-
 
 
     void checkChatRoom(){

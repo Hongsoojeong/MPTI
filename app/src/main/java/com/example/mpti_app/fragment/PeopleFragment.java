@@ -1,5 +1,8 @@
 package com.example.mpti_app.fragment;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.SearchManager;
@@ -27,6 +30,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.app.Fragment;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,10 +56,10 @@ import java.util.zip.Inflater;
 
 
 public class PeopleFragment extends Fragment  {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
 
 
 
@@ -68,43 +72,48 @@ public class PeopleFragment extends Fragment  {
 
 
 
-        Dialog revoke_dialog;
-
-        revoke_dialog = new Dialog(view.getContext());       // Dialog 초기화
-        revoke_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
-        revoke_dialog.setContentView(R.layout.dialog_revoke);             // xml 레이아웃 파일과 연결
-
-        revoke_dialog.show(); // 다이얼로그 띄우기
-        revoke_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-
-        TextView text = (TextView) revoke_dialog.findViewById(R.id.dialog_text);
-        Button yes = (Button) revoke_dialog.findViewById(R.id.yesBtn);
-        Button no = (Button) revoke_dialog.findViewById(R.id.noBtn);
-
-        text.setText("MPTI의 모든 유저 목록입니다. \n원하시는 MPTI를 골라 해당 MPTI 유저분들과\n자유롭게 소통해보세요!\n\n※ 1. 욕설 및 비하발언을 할 경우\n   활동 제재가 걸릴 수 있습니다\n   2. 특정 유저의 신고를 원하시는 경우, \n    운영자에게 문의 부탁드립니다.");
-        yes.setText("확인");
-        no.setText("");
-
-
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                revoke_dialog.dismiss();
-
-            }
-
-        });
 
 
 
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
+    Dialog revoke_dialog;
+
+    revoke_dialog = new Dialog(view.getContext());       // Dialog 초기화
+    revoke_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+    revoke_dialog.setContentView(R.layout.dialog_revoke);             // xml 레이아웃 파일과 연결
+
+    revoke_dialog.show(); // 다이얼로그 띄우기
+    revoke_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+    TextView text = (TextView) revoke_dialog.findViewById(R.id.dialog_text);
+    Button yes = (Button) revoke_dialog.findViewById(R.id.yesBtn);
+    Button no = (Button) revoke_dialog.findViewById(R.id.noBtn);
+
+    text.setText("MPTI의 모든 유저 목록입니다. \n원하시는 MPTI를 골라 해당 MPTI 유저분들과\n자유롭게 소통해보세요!\n\n※ 1. 욕설 및 비하발언을 할 경우\n   활동 제재가 걸릴 수 있습니다\n   2. 특정 유저의 신고를 원하시는 경우, \n    운영자에게 문의 부탁드립니다.");
+    yes.setText("확인");
+    no.setText("");
+
+
+    yes.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+
+            revoke_dialog.dismiss();
+
+
+        }
+
+    });
+
+
+    no.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            revoke_dialog.dismiss();
+        }
+    });
 
 
 
@@ -139,6 +148,9 @@ public class PeopleFragment extends Fragment  {
 
                     for (DataSnapshot snapshot: datasnapshot.getChildren()){
                         UserModel userModel = snapshot.getValue(UserModel.class);
+                        if (userModel.uid.equals("")){
+                            continue;
+                        }
                         if (userModel.uid.equals(myUid)){
                             continue;
                         }
